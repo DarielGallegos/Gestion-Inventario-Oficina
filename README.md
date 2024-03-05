@@ -11,9 +11,5 @@
     Chartjs
 
 
-[!NOTE]
+> [!NOTE]
 Se utilizaran, los recursos de forma offline, por lo que se descargaran los archivos pertenecientes a librerias.
-[!TIP]
-[!IMPORTANT]
-[!WARNING]
-[!CAUTION]
