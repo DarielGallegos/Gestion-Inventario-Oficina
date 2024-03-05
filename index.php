@@ -26,7 +26,7 @@
                               </div>
                         </form>
                         <section class="text-center mt-4">
-                            <a class="button-log" href="./views/main.html">Ingresar</a>
+                            <a class="button-log" href="./views/main.php">Ingresar</a>
                         </section>
                     </section>
                 </section>
