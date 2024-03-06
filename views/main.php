@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Inventario Oficina</title>
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
+    <link rel="stylesheet" href=".././css/globalStyle.css">
 </head>
 <body>
     <?php include('.././components/nav-bar.php');?>
