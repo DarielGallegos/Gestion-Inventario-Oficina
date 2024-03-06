@@ -1,14 +1,13 @@
-<nav class="row navbar navbar-dark bg-dark fixed-top">
-    <div class="col-12 container-fluid">
-        <div class="col-2 container-fluid">
-            <div class="row">
+<nav class="row justify-content-between navbar navbar-dark bg-dark fixed-top">
+        <div class="col-md-4  container-fluid">
+            <div class="row justify-content-start">
                 <div class="col-4">
                     <img class="photo-radius" src="./img/icons/casa.png" alt="">
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <p class="text-white">El Erick</p>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="container-fluid nav-item dropdown">
                             <a class="nav-link dropdown-toggle rotate-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -25,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-10 container-fluid">
+        <div class="col-md-4 offset-md-4 ms-auto container-fluid">
             <a class="navbar-brand" href="#">Gestión Inventario Oficina</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -81,5 +80,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </nav>

@@ -6,6 +6,7 @@
     <title>Gestión Inventario Oficina</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/globalStyle.css">
 </head>
 <body>
     <section class="container-fluid margin-top">
