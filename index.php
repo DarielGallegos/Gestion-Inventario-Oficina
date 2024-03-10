@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/globalStyle.css">
+    <link rel="shortcut icon" href="./img/UTH-Black-favicon.png" type="image/x-icon">
 </head>
 <body>
     <section class="container-fluid margin-top">

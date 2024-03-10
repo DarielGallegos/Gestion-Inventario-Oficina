@@ -51,14 +51,14 @@
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=".././img/icons/factura.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                        Facturación
+                                        Transacciones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href="#">
+                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
                                                     <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                                    Matricula
+                                                    Registro Productos
                                                 </a>
                                             </div>
                                         </li>
