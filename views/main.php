@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Inventario Oficina</title>
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
+<<<<<<< Updated upstream
     <link rel="stylesheet" href=".././css/globalStyle.css">
+=======
+    <link rel="stylesheet" href=".././css/index.css">
+>>>>>>> Stashed changes
 </head>
 <body>
     <?php include('.././components/nav-bar.php');?>
