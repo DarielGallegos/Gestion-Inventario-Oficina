@@ -22,6 +22,7 @@
 
             <!-- Inicio Estructura de Formulario Registro -->
             <section class=" col col-6 col-md-4">
+                <p class="text-center paragraph">Formulario de Registro</p>
                 <form>
                     <label for="listProducto" class="form-label">Seleccione el producto: </label>
                     <select name="listProducto" id="listProducto" class="form-control">

@@ -42,7 +42,7 @@
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" aria-current="page" href="./index.php">
+                                        <a class="navbar-brand" aria-current="page" href=".././views/main.php">
                                             <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                             Home
                                         </a>
@@ -64,18 +64,27 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href="#">
-                                                    <img src=".././img/icons/mensualidad.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                                    Mensualidad
+                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
+                                                    <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Peticiones
                                                 </a>
-
                                             </div>
                                         </li>
                                         <li>
-                                            <hr class="dropdown-divider">
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
+                                                    <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Entregas
+                                                </a>
+                                            </div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href="#">
+                                                    <img src=".././img/icons/mensualidad.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Pedidos Realizados
+                                                </a>
+                                            </div>
                                         </li>
                                     </ul>
                                 </li>
