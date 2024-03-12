@@ -64,7 +64,7 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
+                                                <a class="navbar-brand" href=".././views/bandPeticiones.php">
                                                     <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Peticiones
                                                 </a>
