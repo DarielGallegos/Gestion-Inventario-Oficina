@@ -21,7 +21,8 @@
     }
 
     #btnEliminar:hover {
-        background-color: darkred;
+        background-color: red;
+        color: white;
     }
 
         
