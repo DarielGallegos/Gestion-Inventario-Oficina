@@ -80,7 +80,7 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href="#">
+                                                <a class="navbar-brand" href="pedidoRealizado.php">
                                                     <img src=".././img/icons/mensualidad.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Pedidos Realizados
                                                 </a>
