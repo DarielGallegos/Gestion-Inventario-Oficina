@@ -6,7 +6,7 @@
                     <img class="photo-radius" src=".././img/persona.png" alt="">
                 </div>
                 <div class="col-4">
-                    <p class="text-white">Usuario</p>
+                    <p class="text-white">User</p>
                 </div>
                 <div class="col-4">
                     <div class="dropdown">
