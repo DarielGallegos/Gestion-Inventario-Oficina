@@ -1,3 +1,10 @@
+form {
+    color: #6D6D6D;
+    background-color: #F0F0F0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .button-log{
     text-decoration: none;
     color: black;
@@ -32,6 +39,28 @@
 .oculto {
     display: none;
 }
+.ven_modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.card_container {
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.tbl_wrapper {
+    background-color: rgba(125, 124, 124, 0.162);
+    padding: 20px;
+    margin-top: 80px;
+}
+
+.oculto {
+    display: none;
+}
+
 .ven_modal {
     position: absolute;
     top: 50%;

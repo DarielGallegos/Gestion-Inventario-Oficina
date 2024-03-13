@@ -22,8 +22,8 @@
 
             <!-- Inicio Estructura de Formulario Registro -->
             <section class=" col col-6 col-md-4">
-                <p class="text-center paragraph">Formulario de Registro</p>
                 <form>
+                    <h2 class="text-center">Formulario de Registro</h2>
                     <label for="listProducto" class="form-label">Seleccione el producto: </label>
                     <select name="listProducto" id="listProducto" class="form-control">
                         <option value="">---------- Seleccione ----------</option>
@@ -36,10 +36,8 @@
                     <label for="inpCantidad" class="form-label">Ingrese la cantidad: </label>
                     <input type="text" class="form-control" id="inpCantidad" name="inpCantidad">
                     <br>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%">Agregar</button>
                 </form>
-                <section class="btn-group mt-4">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
-                </section>
             </section>
             <!-- Fin Estructura de Formulario Registro -->
 
