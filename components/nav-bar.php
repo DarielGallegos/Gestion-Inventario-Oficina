@@ -17,7 +17,7 @@
                             <li><a class="dropdown-item" href="#">Salir</a></li>
                         </ul>
                     </div>
-                
+
                 </div>
             </div>
         </section>
@@ -43,7 +43,7 @@
                                 <li class="nav-item">
                                     <div class="container-fluid">
                                         <a class="navbar-brand" aria-current="page" href=".././views/main.php">
-                                            <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                            <img src=".././img/icons/hogar.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                             Home
                                         </a>
                                     </div>
@@ -56,7 +56,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/catalogoproducto.php">
+                                                <a class="navbar-brand" href=".././views/dmCatalogoProducto.php">
                                                     <img src=".././img/icons/catalogo-de-producto.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Producto
                                                 </a>
@@ -64,7 +64,7 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/dmcategoria.php">
+                                                <a class="navbar-brand" href=".././views/dmCategoria.php">
                                                     <img src=".././img/icons/aplicacion.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Categoria
                                                 </a>
@@ -72,7 +72,7 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/dmdepartamento.php">
+                                                <a class="navbar-brand" href=".././views/dmDepartamento.php">
                                                     <img src=".././img/icons/personas.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Departamentos
                                                 </a>
@@ -82,38 +82,38 @@
                                 </li>
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src=".././img/icons/factura.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                        <img src=".././img/icons/transaccion.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                         Transacciones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
-                                                    <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                <a class="navbar-brand" href=".././views/trRegEntradaProducto.php">
+                                                    <img src=".././img/icons/caja.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Registro Productos
                                                 </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/pedido.php">
-                                                    <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                <a class="navbar-brand" href=".././views/trPedido.php">
+                                                    <img src=".././img/icons/cuestionario.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Peticiones
                                                 </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/pedidoRealizado.php">
-                                                    <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                <a class="navbar-brand" href=".././views/trEntrega.php">
+                                                    <img src=".././img/icons/caja-de-entrega.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Entregas
                                                 </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/bandPeticiones.php">
-                                                    <img src=".././img/icons/mensualidad.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                <a class="navbar-brand" href=".././views/trBandejaPeticiones.php">
+                                                    <img src=".././img/icons/bandeja-de-entrada.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Pedidos Realizados
                                                 </a>
                                             </div>
@@ -122,19 +122,35 @@
                                 </li>
                                 <li class="nav-item">
                                     <div class="container-fluid">
-                                        <a class="navbar-brand" aria-current="page" href=".././views/Consultas_reporteria.php">
-                                            <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                        <a class="navbar-brand" aria-current="page" href=".././views/consultaReporteria.php">
+                                            <img src=".././img/icons/analitica.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                             Consultas y Reporteria
                                         </a>
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <div class="container-fluid">
-                                        <a class="navbar-brand" aria-current="page" href=".././views/RegEmpleados.php">
-                                            <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                            Seguridad
-                                        </a>
-                                    </div>
+                                <li class="container-fluid nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src=".././img/icons/proteger.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                        Seguridad
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/sgRegEmpleados.php">
+                                                    <img src=".././img/icons/curriculum.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Empleados
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/sgRegUsuarios.php">
+                                                    <img src=".././img/icons/datos-del-usuario.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Usuarios
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                             </ul>
