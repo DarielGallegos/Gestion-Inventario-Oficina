@@ -6,7 +6,7 @@
                     <img class="photo-radius" src=".././img/persona.png" alt="">
                 </div>
                 <div class="col-4">
-                    <p class="text-white">User</p>
+                    <p class="text-white">Usuarios</p>
                 </div>
                 <div class="col-4">
                     <div class="dropdown">
@@ -14,7 +14,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Salir</a></li>
+                            <li><a class="dropdown-item" href="../index.php">Salir</a></li>
                         </ul>
                     </div>
 
