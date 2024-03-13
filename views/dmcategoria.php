@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,6 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripcion</th>
-
                         </tr>
                     </thead>
                     <tbody id="contentTable">
