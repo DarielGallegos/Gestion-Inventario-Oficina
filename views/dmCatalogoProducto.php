@@ -29,13 +29,6 @@
             color: white;
         }
 
-        form {
-            color: #6D6D6D;
-            background-color: #F0F0F0;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
         form input[type="text"],
         form select {
             border: 1px solid #6D6D6D;
@@ -90,56 +83,47 @@
 </head>
 
 <body>
-<<<<<<< Updated upstream:views/catalogoproducto.php
-
-<h1>Catalogo Productos - Registro</h1>
-<form method="post" action="submit_catalogo_productos.php">
-    ID: <input type="text" name="id"><br><br>
-    Nombre: <input type="text" name="nombre"><br><br>
-    Descripcion: <input type="text" name="descripcion"><br><br>
-    Estante: <input type="text" name="estante"><br><br>
-    ID_Categoria: <input type="text" name="id_categoria"><br><br>
-    <input type="submit" value="Submit"><br><br>
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Estante</th>
-            <th>ID_Categoria</th>
-        </tr>
-    </thead>
-    <tbody>
-  
-    </tbody>
-</table>
-
-=======
     <?php include('.././components/nav-bar.php'); ?>
-    <h1>Catalogo Productos - Registro</h1>
     <section class="mt-container container-fluid">
+    <h2 class="text-center">Catalogo Productos - Registro</h2><br>
+        <section class="row">
+            <section class="col col-4">
+                <form >
+                    <h3 class="text-center">Formulario de Registro</h3>
+                    <label for="">Nombre Categoria: </label>
+                    <input type="text" class="form-control">
+                    <label for="">Descripcion: </label>
+                    <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                    <label for="">Seleccione la Categoria: </label>
+                    <select name="" id="" class="form-control">
+                        <option value="">----Seleccione-----</option>
+                        <option value="">Papeleria</option>
+                        <option value="">Limpieza</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%">Agregar</button>
+                </form>
+            </section>
+            <section class="col col-8">
+                <label for="search">Buscar Producto:</label>
+                <input type="text" id="search" onkeyup="searchTable()" placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria" style="width: 50%; padding: 8px;">
+                <br>
+                <table class="table table-hover" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contentTable">
+                        <!-- Table content will be populated dynamically -->
+                    </tbody>
+                </table>
+            </section>
+        </section>
 
-        <label for="search">Buscar Producto:</label>
-        <input type="text" id="search" onkeyup="searchTable()" placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria" style="width: 50%; padding: 8px;">
-        <br>
-        <table class="table table-hover" id="tabla">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Estante</th>
-                    <th>Categoria</th>
-                </tr>
-            </thead>
-            <tbody id="contentTable">
-                <!-- Table content will be populated dynamically -->
-            </tbody>
-        </table>
-    </section>
+
     </section>
 
     <script>
@@ -168,7 +152,6 @@
             }
         }
     </script>
->>>>>>> Stashed changes:views/dmCatalogoProducto.php
 </body>
 <script src=".././js/bootstrap.bundle.min.js"></script>
 <script src=".././js/popper.min.js"></script>

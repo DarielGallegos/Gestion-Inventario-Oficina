@@ -65,10 +65,8 @@
         <div class="container-fluid row gx-5 px-4">
             <!-- Inicio registro de empleados -->
             <section class="col col-6 col-md-4">
-                <p class="text-center paragraph">Formulario de usuarios</p>
                 <form>
-                    <label for="inpID" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="inpID" name="inpID">
+                    <h2 class="text-center">Formulario de Usuarios</h2>
 
                     <label for="inpuser" class="form-label">Ingrese un usuario: </label>
                     <input type="text" class="form-control" id="inpuser" name="inpuser">
@@ -76,11 +74,16 @@
                     <label for="inpPass" class="form-label">Ingrese la contraseña: </label>
                     <input type="password" class="form-control" id="inpPass" name="inpPass">
 
-                    <label for="inpPassC" class="form-label">Confirmar contraseña: </label>
-                    <input type="password" class="form-control" id="inpPassC" name="inpPassC">
-
+                    <section class="row">
+                        <section class="col col-11">
+                            <label for="inpPassC" class="form-label">Confirmar contraseña: </label>
+                            <input type="password" class="form-control" id="inpPassC" name="inpPassC">
+                        </section>
+                        <section class="col col-1">
+                            <button type="button" onclick="ver();" style="margin-top:31px; margin-left: -25px;" class="btn">👁‍🗨</button>
+                        </section>
+                    </section>
                 </form>
-                <button onclick="ver();" class="btn btn-outline-primary">Ver contraseña</button>
                 <br>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
                     <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
@@ -94,14 +97,10 @@
                 <table class="table table-hover" id="tabla">
                     <thead>
                         <tr>
-
                             <th>Id</th>
                             <th>Nombre</th>
                             <th>Usuario</th>
                             <th>Departamento</th>
-
-
-
                         </tr>
                     </thead>
                     <tbody id="contentTable">

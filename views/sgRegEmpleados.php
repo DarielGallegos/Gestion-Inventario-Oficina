@@ -65,8 +65,8 @@
         <div class="container-fluid row gx-5 px-4">
             <!-- Inicio registro de empleados -->
             <section class="col col-6 col-md-4">
-                <p class="text-center paragraph">Formulario de empleados</p>
                 <form>
+                    <h2 class="text-center">Formulario de empleados</h2>
                     <label for="inpnombre" class="form-label">Ingrese su DNI: </label>
                     <input type="text" class="form-control" id="inpnombre" name="inpnombre">
 

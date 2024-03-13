@@ -92,27 +92,31 @@
 
             <!-- Inicio Estructura de Formulario Registro -->
             <section class=" col col-6 col-md-4">
-                <p class="text-center paragraph">Formulario de Peticiones</p>
                 <form>
-                    <label for="listProducto" class="form-label">Seleccione el producto: </label>
-                    <select name="listProducto" id="listProducto" class="form-control">
+                    <h2 class="text-center">Formulario de Entrega</h2>
+                    <label for="NomEmpleado" class="form-label">Empleado Envia: Jorge Perez</label>
+                    <label for="" class="form-label">Seleccione el Departamento Destino: </label>
+                    <select name="" id="" class="form-control">
                         <option value="">------------- Seleccione ------------- ↓</option>
-                        <option value="Rema de Papel">Rema de Papel</option>
-                        <option value="Marcadores">Marcadores</option>
-                        <option value="Caja Lapiz Carbon 12 uds.">Caja Lapiz Carbon 12 uds.</option>
-                        <option value="Tinta para Impresora Canon">Tinta para Impresora Canon</option>
-                        <option value="Grapadora">Grapadora</option>
-                    </select><br>
-                    <label for="inpCantidad" class="form-label">Ingrese la cantidad: </label>
-                    <input type="text" class="form-control" id="inpCantidad" name="inpCantidad">
+                        <option value="">Administracion</option>
+                        <option value="">IT</option>
+                        <option value="">CAP</option>
+                        <option value="">Caja</option>
+                    </select>
+                    <label for="">Fecha de Registro</label>
+                    <input type="date" class="form-control" id="dateEntrega" readonly>
+                    <label for="">Seleccione el ID Pedido</label>
+                    <select name="" id="" class="form-control">
+                        <option value="">-------------SELECCIONE----------</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
                     <br>
-                    <label for="NomEmpleado" class="form-label">Ingrese su Nombre</label>
-                    <input type="text" class="form-control" id="NomEmpleado" name="NomEmpleado">
+                    <label for="">Seleccione el archivo de firma:</label>
+                    <input type="file" class="form-control">
                     <br>
-                    <label for="IdEmpleado" class="form-label">Ingrese su ID</label>
-                    <input type="text" class="form-control" id="IdEmpleado" name="IDdelempleado">
-
-
+                    <label for="" class="form-label">Total de Productos: </label>
                 </form>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
                     <button type="button" class="btn btn-outline-primary" id="btnAgregar">Mostrar</button>
@@ -127,11 +131,9 @@
                 <table class="table table-hover" id="tabla">
                     <thead>
                         <tr>
-                            <th>ID Pedido</th>
                             <th>Nombre Del producto</th>
                             <th>Cantidad Del producto</th>
-                            <th>Nombre Del empleado</th>
-                            <th>ID del empleado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="contentTable">
@@ -148,7 +150,7 @@
             <table class="table table-hover" id="tabla">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                     </tr>
                 </thead>
@@ -165,27 +167,6 @@
                         <td>Allambrito</td>
                         <td>230</td>
                     </tr>
-                    <tr>
-                        <td>edwyn</td>
-                        <td>230</td>
-                    </tr>
-                    <tr>
-                        <td>Allan</td>
-                        <td>230</td>
-                    </tr>
-                    <tr>
-                        <td>Akira</td>
-                        <td>523</td>
-                    </tr>
-                    <tr>
-                        <td>Allambrito</td>
-                        <td>230</td>
-                    </tr>
-                    <tr>
-                        <td>Allambrito</td>
-                        <td>230</td>
-                    </tr>
-
                 </tbody>
             </table>
         </section>
@@ -194,9 +175,6 @@
     </section>
 
 </body>
-<script src=".././js/bootstrap.bundle.min.js">
-
-
-</script>
-
+<script src=".././js/bootstrap.bundle.min.js"></script>
+<script src=".././js/trEntrega.js"></script>
 </html>
