@@ -50,6 +50,38 @@
                                 </li>
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src=".././img/icons/logistica.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                        Datos Maestros
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/catalogoproducto.php">
+                                                    <img src=".././img/icons/catalogo-de-producto.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Producto
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/dmcategoria.php">
+                                                    <img src=".././img/icons/aplicacion.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Categoria
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/dmdepartamento.php">
+                                                    <img src=".././img/icons/personas.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Departamentos
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="container-fluid nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=".././img/icons/factura.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                         Transacciones
                                     </a>
@@ -72,7 +104,7 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/regProdEntrada.php">
+                                                <a class="navbar-brand" href=".././views/pedidoRealizado.php">
                                                     <img src=".././img/icons/matricula.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Entregas
                                                 </a>
@@ -80,13 +112,29 @@
                                         </li>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href="pedidoRealizado.php">
+                                                <a class="navbar-brand" href=".././views/bandPeticiones.php">
                                                     <img src=".././img/icons/mensualidad.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Pedidos Realizados
                                                 </a>
                                             </div>
                                         </li>
                                     </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="container-fluid">
+                                        <a class="navbar-brand" aria-current="page" href=".././views/Consultas_reporteria.php">
+                                            <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                            Consultas y Reporteria
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="container-fluid">
+                                        <a class="navbar-brand" aria-current="page" href=".././views/RegEmpleados.php">
+                                            <img src=".././img/icons/casa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                            Seguridad
+                                        </a>
+                                    </div>
                                 </li>
                             </ul>
                             </ul>
