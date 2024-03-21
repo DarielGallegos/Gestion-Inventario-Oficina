@@ -31,7 +31,11 @@ $('#form-categoria').on('submit', function (e) {
             }
         });
     }else{
-        alert("Favor llene los campos mierda");
+        Swal.fire({
+            icon: 'error',
+            title: "Rellene los Campos",
+            text: "Favor rellenar los campos"
+        });
     }
 });
 //============= FIN FUNCION POST ==========//
