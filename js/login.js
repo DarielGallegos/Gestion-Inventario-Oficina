@@ -1,7 +1,3 @@
-window.onload = () => {
-    alert("Hola");
-};
-
 $('#form-login').on("submit", function(e){
     e.preventDefault();
     $.ajax({

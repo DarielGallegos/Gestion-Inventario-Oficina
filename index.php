@@ -17,27 +17,28 @@
                 <section class="card">
                     <section class="card-body">
                         <h1 class="text-center">Login</h1>
-                        <form method="">
+                        <form id="form-login">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input name="alias" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Usuario: </label>
                               </div>
                               <div class="form-floating">
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input name="passwd" type="password" class="form-control" id="password" placeholder="Password">
                                 <label for="floatingPassword">Contraseña:</label>
                               </div>
-                        </form>
-                        <section class="text-center mt-4">
-                            <a class="button-log" href="./views/main.php">Ingresar</a>
+                              <input type="hidden" name="access" value="getAccess">
+                              <section class="text-center mt-4">
+                            <button type="submit" class="button-log">Ingresar</button>
                         </section>
+                        </form>
                     </section>
                 </section>
             </section>
             <section class="col"></section>
         </section>
-        
-
     </section>
 </body>
-<script src="./js/index.js"></script>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script src="./js/swal.min.js"></script>
+<script src="./js/login.js"></script>
 </html>
