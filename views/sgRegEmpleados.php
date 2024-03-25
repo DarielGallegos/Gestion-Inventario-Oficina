@@ -57,7 +57,9 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include('.././components/nav-bar.php'); 
+    $arreglo = [];
+    ?>
 
     <section class="mt-container container-fluid">
         <h2 class="text-center">Registro de Empleados</h2>
@@ -67,8 +69,8 @@
             <section class="col col-6 col-md-4">
                 <form>
                     <h2 class="text-center">Formulario de empleados</h2>
-                    <label for="inpnombre" class="form-label">Ingrese su DNI: </label>
-                    <input type="text" class="form-control" id="inpnombre" name="inpnombre">
+                    <label for="dni" class="form-label">Ingrese su DNI: </label>
+                    <input type="text" class="form-control" id="dni" name="dni">
 
                     <label for="inpnombre" class="form-label">Ingrese su Nombre: </label>
                     <input type="text" class="form-control" id="inpnombre" name="inpnombre">
@@ -98,7 +100,7 @@
                 </form>
                 <br>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar"  onclick="agregarBoton();" >Agregar</button>
                     <button type="button" class="btn btn-outline-primary" id="btnCancelar">Cancelar</button>
                 </section>
             </section>
@@ -122,12 +124,24 @@
                         <!-- Contenido de la tabla se agregará aquí -->
                     </tbody>
                 </table>
+
+                <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
+
             </section>
             <!-- Fin de la tabla -->
         </div>
     </section>
 
     <script src=".././js/bootstrap.bundle.min.js"></script>
+    <script src=".././js/sgRegEmpleados.js"></script>
 </body>
 
 </html>

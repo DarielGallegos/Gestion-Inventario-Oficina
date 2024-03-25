@@ -10,11 +10,14 @@
     <link rel="stylesheet" href=".././css/globalStyle.css">
 
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include('.././components/nav-bar.php');
+    $arreglo = [];
+    ?>
 
     <section class="mt-container container-fluid">
         <h2 class="text-center">Registro de Productos</h2>
@@ -36,7 +39,7 @@
                     <label for="inpCantidad" class="form-label">Ingrese la cantidad: </label>
                     <input type="text" class="form-control" id="inpCantidad" name="inpCantidad">
                     <br>
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%">Agregar</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%" onclick="agregarBoton();">Agregar</button>
                 </form>
             </section>
             <!-- Fin Estructura de Formulario Registro -->
@@ -44,7 +47,7 @@
 
             <!-- Inicio Estructura de Tabla -->
             <section class="col">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tabla">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -56,11 +59,22 @@
                     <tbody id="contentTable">
                     </tbody>
                 </table>
+
+                <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
             </section>
             <!-- Fin Estructura de Tabla -->
         </section>
     </section>
 </body>
 <script src=".././js/bootstrap.bundle.min.js"></script>
+<script src=".././js/trRegEntradaProducto.js"></script>
 
 </html>

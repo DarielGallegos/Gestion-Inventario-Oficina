@@ -57,7 +57,9 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include('.././components/nav-bar.php'); 
+    $arreglo = [];
+    ?>
 
     <section class="mt-container container-fluid">
         <h2 class="text-center">Formulario de usuarios</h2>
@@ -86,7 +88,7 @@
                 </form>
                 <br>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar"  onclick="agregarBoton();">Agregar</button>
                     <button type="button" class="btn btn-outline-primary" id="btnCancelar">Cancelar</button>
                 </section>
             </section>
@@ -107,6 +109,16 @@
                         <!-- Contenido de la tabla se agregará aquí -->
                     </tbody>
                 </table>
+
+                <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
             </section>
             <!-- Fin de la tabla -->
         </div>
@@ -132,6 +144,8 @@
 
         }
     </script>
+
+<script src=".././js/sgRegUsuarios.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 
     <style>
@@ -83,29 +84,34 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include ('.././components/nav-bar.php');
+    $arreglo = [];
+    ?>
     <section class="mt-container container-fluid">
-    <h2 class="text-center">Catalogo Productos - Registro</h2><br>
+        <h2 class="text-center">Catalogo Productos - Registro</h2><br>
         <section class="row">
             <section class="col col-4">
-                <form >
+                <form>
                     <h3 class="text-center">Formulario de Registro</h3>
                     <label for="">Nombre Categoria: </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="nombre">
                     <label for="">Descripcion: </label>
-                    <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                    <textarea name="" class="form-control" id="descripcion" cols="30" rows="10"></textarea>
                     <label for="">Seleccione la Categoria: </label>
-                    <select name="" id="" class="form-control">
+                    <select name="" id="categoria" class="form-control">
                         <option value="">----Seleccione-----</option>
                         <option value="">Papeleria</option>
                         <option value="">Limpieza</option>
                     </select>
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%">Agregar</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%"
+                        onclick="agregarBoton();">Agregar</button>
                 </form>
             </section>
             <section class="col col-8">
                 <label for="search">Buscar Producto:</label>
-                <input type="text" id="search" onkeyup="searchTable()" placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria" style="width: 50%; padding: 8px;">
+                <input type="text" id="search" onkeyup="searchTable()"
+                    placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria"
+                    style="width: 50%; padding: 8px;">
                 <br>
                 <table class="table table-hover" id="tabla">
                     <thead>
@@ -117,9 +123,20 @@
                         </tr>
                     </thead>
                     <tbody id="contentTable">
-                        <!-- Table content will be populated dynamically -->
+
                     </tbody>
                 </table>
+
+
+                <?php
+                if (count($arreglo) == 0) {
+                    echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                }
+                ?>
             </section>
         </section>
 
@@ -155,5 +172,6 @@
 </body>
 <script src=".././js/bootstrap.bundle.min.js"></script>
 <script src=".././js/popper.min.js"></script>
+<script src=".././js/dmCatalogoProducto.js"></script>
 
 </html>

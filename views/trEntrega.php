@@ -84,7 +84,9 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include('.././components/nav-bar.php'); 
+    $arreglo = [];
+    ?>
 
     <section class="mt-container container-fluid">
         <h2 class="text-center">PEDIDOS REALIZADOS</h2>
@@ -119,7 +121,7 @@
                     <label for="" class="form-label">Total de Productos: </label>
                 </form>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Mostrar</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" onclick="agregarBoton();" >Mostrar</button>
                     <button type="button" class="btn btn-outline-primary" id="btnEliminar">Eliminar </button>
                 </section>
             </section>
@@ -139,6 +141,15 @@
                     <tbody id="contentTable">
                     </tbody>
                 </table>
+                <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
             </section>
             <!-- Fin Estructura de Tabla -->
         </section>
@@ -147,7 +158,7 @@
         <br>
         <!--   <P class="text-center paragraph"> FormularioNC</p> -->
         <section class="nuevaTabla">
-            <table class="table table-hover" id="tabla">
+            <table class="table table-hover" id="tabla-producto">
                 <thead>
                     <tr>
                         <th>Producto</th>

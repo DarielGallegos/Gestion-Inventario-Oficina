@@ -76,7 +76,9 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
+    <?php include('.././components/nav-bar.php'); 
+     $arreglo = [];
+    ?>
 
     <section class="mt-container container-fluid">
         <h2 class="text-center">PETICIONES</h2>
@@ -118,6 +120,16 @@
                     <tbody id="contentTable">
                     </tbody>
                 </table>
+
+                <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
             </section>
             <!-- Fin Estructura de Tabla -->
         </section>
