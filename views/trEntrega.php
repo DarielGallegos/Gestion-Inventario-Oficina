@@ -38,18 +38,18 @@
                     <select name="" id="cboDepartamento" class="form-control">
                         <option value="0">------------- Seleccione ------------- ↓</option>
                         <?php
-                        for ($i = 0; $i < count($departamentos); $i++) {
+                            for ($i = 0; $i < count($departamentos); $i++) {
                         ?>
                             <option value="<?= $departamentos[$i]['ID'] ?>"><?= $departamentos[$i]['Nombre'] ?></option>
-                        <?php } ?>
+                        <?php }  ?>
                     </select>
                     <label for="">Fecha de Registro</label>
                     <input type="date" class="form-control" id="dateEntrega" readonly>
                     <label for="">Seleccione el ID Pedido</label>
                     <select name="" id="cboPedido" class="form-control">
-                        <option value='0'>-------------SELECCIONE----------</option>
+                        <option value="0">------------- Seleccione ------------- ↓</option>
                         <?php
-                        for ($i = 0; $i < count($pedido); $i++) {
+                            for ($i = 0; $i < count($pedido); $i++) {
                         ?>
                             <option value="<?= $pedido[$i]['ID'] . '-' . $pedido[$i]['ID_DEPARTAMENTO'] ?>"><?= "N.Pedido " . $pedido[$i]['ID'] . " - " . $pedido[$i]['Empleado'] ?></option>
                         <?php } ?>
@@ -98,9 +98,13 @@
     <td>        
         <select class="form-control" name="" id="cboInsumo">
             <option value="">Seleccione</option>
-        <?php for ($i = 0; $i < count($data); $i++) { ?>
+        <?php 
+        if(count($data) > 0){
+            for ($i = 0; $i < count($data); $i++) { ?>
             <option value=<?= $data[$i]['Serial Insumo'] ?> ><?= $data[$i]['Serial Insumo'] . "  " . $data[$i]['Insumo'] ?></option>
-        <?php } ?>
+        <?php } 
+        }
+        ?>
         </select>
     </td>
     <td>

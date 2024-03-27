@@ -4,7 +4,7 @@ class mdlEntrega extends connectMySQL
 {
     public function getAllInsumos()
     {
-        $query = 'CALL getInsumosStock()';
+        $query = 'CALL stockInsumoGet()';
         try {
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -20,7 +20,7 @@ class mdlEntrega extends connectMySQL
     }
 
     public function getInsumoStock($id){
-        $query = 'CALL getInsumoStock(?)';
+        $query = 'CALL stockInsumoGetOne(?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -41,7 +41,7 @@ class mdlEntrega extends connectMySQL
     }
 
     public function getDepartamentos(){
-        $query = 'CALL getDepartamentos()';
+        $query = 'CALL departamentosGet()';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -56,12 +56,12 @@ class mdlEntrega extends connectMySQL
         }
     }
     public function insertEntrega($cabecera, $detalle){
-        $queryCabecera = 'CALL insertEntregaSPCabecera(?,?,?,?)';
+        $queryCabecera = 'CALL entregaCabeceraSPInsert(?,?,?,?)';
 
         if($cabecera['idPedido'] != 0){
-            $queryCabecera = 'CALL insertEntregaCabecera(?,?,?,?,?)';
+            $queryCabecera = 'CALL entregaCabeceraInsert(?,?,?,?,?)';
         }
-        $queryDetalle = 'CALL insertEntregaDetalle(?,?,?,?)';
+        $queryDetalle = 'CALL entregaDetalleInsert(?,?,?,?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($queryCabecera);
@@ -92,7 +92,7 @@ class mdlEntrega extends connectMySQL
     }
 
     public function getPedidos($status){
-        $query = 'CALL getCabeceraPedidoAll(?)';
+        $query = 'CALL pedidoCabeceraGet(?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -109,7 +109,7 @@ class mdlEntrega extends connectMySQL
     }
 
     public function getDetallePedido($id){
-        $query = 'CALL getDetallePedidoOne(?)';
+        $query = 'CALL pedidoDetalleGetOne(?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);

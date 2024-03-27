@@ -1,9 +1,9 @@
 <?php
     class connectMySQL{
-        private $db = 'gestion_oficina';
-        private $user = 'devInventarioOficina';
-        private $passwd = 'devInventario9118';
-        private $hostname = 'localhost';
+        private $db = 'u903638193_inventario';
+        private $user = 'u903638193_grupo4';
+        private $passwd = 'DDjky2H]';
+        private $hostname = '62.72.50.154';
         public static $instance;
 
         public function __construct(){}

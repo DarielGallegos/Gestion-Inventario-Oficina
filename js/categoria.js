@@ -2,7 +2,6 @@
 $('#form-categoria').on('submit', function (e) {
     e.preventDefault();
     if($('#NoCategoria').val() != "" && $('#DeCategoria').val() != ""){
-        alert("Hla");
         $.ajax({
             url: '.././controllers/ctrlCategoria.php',
             method: 'POST',
@@ -18,6 +17,7 @@ $('#form-categoria').on('submit', function (e) {
                         icon: 'success',
                         title: 'Exito',
                     });
+                    location.reload();
                 } else {
                     Swal.fire({
                         text: 'Error al intentar ingresar nuevo registro',
@@ -74,6 +74,7 @@ function editCategoria(id) {
                             icon: 'success',
                             title: 'Exito',
                         });
+                        location.reload();
                     } else {
                         Swal.fire({
                             text: 'Error al Intentar Modificar Registro',
@@ -81,7 +82,6 @@ function editCategoria(id) {
                             title: 'Error',
                         });
                     }
-                    console.log(response);
                 })
             } else {
                 alert("Se cancelo la operacion");
