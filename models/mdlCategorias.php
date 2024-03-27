@@ -3,9 +3,9 @@ include("../repository/connectMySQL.php");
 class mdlCategorias extends connectMySQL{
     public function insertCategoria($nombre, $descripcion, $id){
         if($id == 0){
-            $query = 'CALL insertCategoriaInsumos(?, ?)';
+            $query = 'CALL categoriaInsumosInsert(?, ?)';
         }else{
-            $query = 'CALL updateCategoria(?, ?, ?)';
+            $query = 'CALL categoriaUpdate(?, ?, ?)';
         }
         try{
             $conn = connectMySQL::getInstance()->createConnection();
@@ -27,7 +27,7 @@ class mdlCategorias extends connectMySQL{
     }
 
     public function getOneCategoria($id){
-        $query = 'CALL getOneCategoria(?)';
+        $query = 'CALL categoriaGetOne(?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -43,7 +43,7 @@ class mdlCategorias extends connectMySQL{
         }
     }
     public function getAllCategorias(){
-        $query = 'CALL getCategoriaInsumos()';
+        $query = 'CALL categoriaInsumosGet()';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
@@ -59,7 +59,7 @@ class mdlCategorias extends connectMySQL{
     }
 
     public function deleteCategoria($id){
-        $query = 'CALL deleteCategoria(?)';
+        $query = 'CALL categoriaDelete(?)';
         try{
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);

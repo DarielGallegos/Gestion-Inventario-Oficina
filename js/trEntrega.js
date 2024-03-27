@@ -83,6 +83,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
                             title: 'Exito',
                             text: 'Insercion hecha correctamente'
                         });
+                        location.reload();
                         flushData();
                     }
                 });
