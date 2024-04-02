@@ -12,78 +12,7 @@ if($_SESSION['Oficina']['id']){
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
-
-
-
-    <style>
-        .nuevaTabla {
-            background-color: #E1E1E1;
-            padding: 20px;
-            border-radius: 20px;
-        }
-
-        #btnEliminar {
-            background-color: white;
-            color: red;
-            border-color: red;
-        }
-
-        #btnEliminar:hover {
-            background-color: red;
-            color: white;
-        }
-
-        form input[type="text"],
-        form select {
-            border: 1px solid #6D6D6D;
-        }
-
-        form input[type="text"]:focus,
-        form select:focus {
-            border-color: #6D6D6D;
-            box-shadow: 0 0 5px #6D6D6D;
-        }
-
-        form label {
-            font-weight: bold;
-        }
-
-        #tabla {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #tabla td,
-        #tabla th {
-            border: 1px solid #CCC7C5;
-            padding: 8px;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #CCC7C5;
-        }
-
-        #tabla tr:hover {
-            background-color: #CCC7C5;
-        }
-
-        #tabla th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #6D6D6D;
-            color: white;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        input {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
 </head>
 
 <body>
