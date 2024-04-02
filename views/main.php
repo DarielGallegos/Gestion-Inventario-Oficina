@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['Oficina']['id'])){
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,3 +23,6 @@
 <script src=".././js/popper.min.js"></script>
 
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

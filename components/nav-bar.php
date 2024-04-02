@@ -6,15 +6,14 @@
                     <img class="photo-radius" src=".././img/persona.png" alt="">
                 </div>
                 <div class="col-4">
-                    <p class="text-white">Usuarios</p>
+                    <p class="text-white"><?= $_SESSION['Oficina']['usuario']?></p>
                 </div>
                 <div class="col-4">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
-                            <li><a class="dropdown-item" href="../index.php">Salir</a></li>
+                            <li><a class="dropdown-item" href="./logout.php">Salir</a></li>
                         </ul>
                     </div>
 
@@ -48,12 +47,17 @@
                                         </a>
                                     </div>
                                 </li>
+                                <!-- Creacion Menu Datos Maestros --->
+                                <?php
+                                    if($_SESSION['Oficina']['pdm'] > 0){
+                                ?>
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=".././img/icons/logistica.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                         Datos Maestros
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
+                                        <?php if($_SESSION['Oficina']['pdm'] >= 1){?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/dmCatalogoProducto.php">
@@ -62,6 +66,8 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php } ?>
+                                        <?php if($_SESSION['Oficina']['pdm'] >= 2){?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/dmCategoria.php">
@@ -70,6 +76,8 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php } ?>
+                                        <?php if($_SESSION['Oficina']['pdm'] >= 3){?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/dmDepartamento.php">
@@ -78,22 +86,28 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
+                                <?php
+                                    }
+                                ?>
+                                <!-- Fin Creacion Menu Datos Maestros --->
+
+                                <!-- Creacion Menu Transacciones --->
+                                <?php
+                                    if($_SESSION['Oficina']['ptr']>0){
+                                ?>
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=".././img/icons/transaccion.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                         Transacciones
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li>
-                                            <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/trRegEntradaProducto.php">
-                                                    <img src=".././img/icons/caja.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                                    Registro Productos
-                                                </a>
-                                            </div>
-                                        </li>
+
+                                        <?php
+                                            if($_SESSION['Oficina']['ptr'] >= 1){
+                                        ?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/trPedido.php">
@@ -102,14 +116,12 @@
                                                 </a>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="container-fluid ml-4 dropdown-item">
-                                                <a class="navbar-brand" href=".././views/trEntrega.php">
-                                                    <img src=".././img/icons/caja-de-entrega.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                                    Entregas
-                                                </a>
-                                            </div>
-                                        </li>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php
+                                            if($_SESSION['Oficina']['ptr'] >= 2){
+                                        ?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/trBandejaPeticiones.php">
@@ -118,8 +130,48 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php
+                                            }
+                                        ?>
+                                        <?php
+                                            if($_SESSION['Oficina']['ptr'] >= 3){
+                                        ?>
+                                       <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/trRegEntradaProducto.php">
+                                                    <img src=".././img/icons/caja.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Entrada de Insumos
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <?php
+                                            }
+                                        ?>
+                                        <?php
+                                            if($_SESSION['Oficina']['ptr'] == 4){
+                                        ?>
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/trEntrega.php">
+                                                    <img src=".././img/icons/caja-de-entrega.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Entregas
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <?php
+                                            }
+                                        ?>
                                     </ul>
                                 </li>
+                                <?php
+                                    }
+                                ?>
+                                <!-- Fin Menu Transacciones --->
+
+                                <!-- Creacion Menu Consultas y Reporteria -->
+                                <?php
+                                    if($_SESSION['Oficina']['pcr']>0){
+                                ?>
                                 <li class="nav-item">
                                     <div class="container-fluid">
                                         <a class="navbar-brand" aria-current="page" href=".././views/consultaReporteria.php">
@@ -128,12 +180,18 @@
                                         </a>
                                     </div>
                                 </li>
+                                <?php } ?>
+                                <!-- Fin Creacion Menu Consultas y Reporteria -->
+
+                                <!-- Creacion Menu Seguridad -->
+                                <?php if($_SESSION['Oficina']['pseg']>0){ ?>
                                 <li class="container-fluid nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=".././img/icons/proteger.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                         Seguridad
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
+                                        <?php if($_SESSION['Oficina']['pseg']>=1){?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/sgRegEmpleados.php">
@@ -142,6 +200,8 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php } ?>
+                                        <?php if($_SESSION['Oficina']['pseg']>=2){?>
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/sgRegUsuarios.php">
@@ -150,8 +210,11 @@
                                                 </a>
                                             </div>
                                         </li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
+                                <?php } ?>
+                                <!-- Fin Creacion Menu Seguridad -->
                             </ul>
                             </ul>
                         </div>

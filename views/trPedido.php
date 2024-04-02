@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['Oficina']['id']){
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -86,7 +90,8 @@
             <section class=" col col-6 col-md-4">
                 <form>
                     <h2 class="text-center">Formulario de Peticiones</h2>
-                    <label for="NomEmpleado" class="form-label">Empleado: Jorge Perez</label>
+                    <label for="NomEmpleado" class="form-label">Empleado Envia: <?= $_SESSION['Oficina']['nombre']?></label>
+                    <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id']?>'>
                     <br>
                     <label for="" class="form-label">Departamento: Administracion</label>
                     <br>
@@ -127,3 +132,6 @@
 <script src=".././js/trPedido.js"></script>
 
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

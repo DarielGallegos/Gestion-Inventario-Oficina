@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['Oficina']['id']){
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -64,3 +68,6 @@
 <script src=".././js/bootstrap.bundle.min.js"></script>
 
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

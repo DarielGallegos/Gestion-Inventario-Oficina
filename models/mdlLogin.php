@@ -10,6 +10,15 @@ class mdlLogin extends connectMySQL{
             $statement->bindParam(2, $passwd);
             if($statement->execute()){
                 $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+                if(count($data)>0){
+                    $_SESSION['Oficina']['id'] = $data[0]['ID_EMPLEADO'];
+                    $_SESSION['Oficina']['usuario'] = $data[0]['USUARIO'];
+                    $_SESSION['Oficina']['nombre'] = $data[0]['Nombre'];
+                    $_SESSION['Oficina']['pdm'] = $data[0]['dMaestros'];
+                    $_SESSION['Oficina']['ptr'] = $data[0]['transacciones'];
+                    $_SESSION['Oficina']['pcr'] = $data[0]['consultasReporteria'];
+                    $_SESSION['Oficina']['pseg'] = $data[0]['seguridad'];
+                }
             }else{
                 $data = $statement->errorInfo();
             }

@@ -1,4 +1,15 @@
 $('#form-login').on("submit", function(e){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
     e.preventDefault();
     $.ajax({
         url: './controllers/ctrlLogin.php',
@@ -10,23 +21,20 @@ $('#form-login').on("submit", function(e){
         processData: false,
         success:function(response){
             if(response.status === 'success'){
-                Swal.fire({
+                Toast.fire({
                     text: 'Acceso Concedido',
                     icon: 'success',
                     title: 'Exito',
-                }).then((result) => {
-                    window.location.href = './views/main.php';
-                });
-            }else{
-                Swal.fire({
-                    text: 'Credenciales Erroneas',
-                    icon: 'error',
-                    title: 'Error'
                 })
+                location.reload();
             }
         },
         error:function(errorThrown){
-            console.log("Error:", errorThrown);
+            Toast.fire({
+                text: 'Credenciales Erroneas',
+                icon: 'error',
+                title: 'Error'
+            })
         }
     });
 });
