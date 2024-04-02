@@ -23,11 +23,11 @@ if(!isset($_SESSION['Oficina']['id'])){
                         <h1 class="text-center">Login</h1>
                         <form id="form-login">
                             <div class="form-floating mb-3">
-                                <input name="alias" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input name="alias" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                                 <label for="floatingInput">Usuario: </label>
                               </div>
                               <div class="form-floating">
-                                <input name="passwd" type="password" class="form-control" id="password" placeholder="Password">
+                                <input name="passwd" type="password" class="form-control" id="password" placeholder="Password" required>
                                 <label for="floatingPassword">Contraseña:</label>
                               </div>
                               <input type="hidden" name="access" value="getAccess">

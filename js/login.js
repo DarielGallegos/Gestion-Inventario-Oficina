@@ -27,6 +27,12 @@ $('#form-login').on("submit", function(e){
                     title: 'Exito',
                 })
                 location.reload();
+            }else{
+                Toast.fire({
+                    text: 'Credenciales Erroneas',
+                    icon: 'error',
+                    title: 'Error'
+                })
             }
         },
         error:function(errorThrown){
