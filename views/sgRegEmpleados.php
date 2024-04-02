@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['Oficina']['id']){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,3 +135,6 @@
 </body>
 
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

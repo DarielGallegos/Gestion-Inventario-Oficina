@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['Oficina']['id']){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,3 +105,6 @@
 <script src=".././js/bootstrap.bundle.min.js"></script>
 <script src=".././js/trBandejaPeticiones.js"></script>
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

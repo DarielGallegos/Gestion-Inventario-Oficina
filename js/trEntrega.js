@@ -1,6 +1,10 @@
 var today = new Date();
 window.onload = () => {
-    document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ today.getDate();
+    if(today.getDate > 10){
+        document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ (today.getDate());
+    }else{
+    document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ ('0'+today.getDate());
+    }
 }
 document.getElementById("btnEnviar").addEventListener('click', () => {
     //EXTRACCION INFORMACION FACTURA
@@ -46,6 +50,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     }
     //Fin Extraccion de Informacion Detalle PreEnvio
     //Inicio extraccion de Informacion Cabecera PreEnvio
+    var id = parseInt(document.getElementById('idEmpleado').value);
     var index = document.getElementById("cboDepartamento").selectedIndex;
     var idDepartamento = document.getElementById("cboDepartamento").options;
     idDepartamento = parseInt(idDepartamento[index].value);
@@ -56,7 +61,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     var idPedido = document.getElementById("cboPedido").options;
     idPedido = parseInt(idPedido[index].value);
     cabecera = {
-        'idEmpleado': 2,
+        'idEmpleado': id,
         'idDepartamento': idDepartamento,
         'totalproductos': totalInsumos,
         'firma': file,

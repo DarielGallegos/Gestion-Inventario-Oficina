@@ -1,6 +1,10 @@
 var today = new Date();
 window.onload = () => {
-    document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ today.getDate();
+    if(today.getDate > 10){
+        document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ (today.getDate());
+    }else{
+    document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ ('0'+today.getDate());
+    }
 }
 
 function agregarBoton() {

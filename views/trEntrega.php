@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['Oficina']['id']){
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,8 +18,7 @@
 </head>
 
 <body>
-    <?php include('.././components/nav-bar.php'); ?>
-    <?php
+    <?php include('.././components/nav-bar.php');
     include(".././controllers/ctrlEntrega.php");
     $controller = new ctrlEntrega();
     $data = $controller->getAllInsumos();
@@ -33,14 +36,15 @@
             <section class=" col col-6 col-md-4">
                 <form>
                     <h2 class="text-center">Formulario de Entrega</h2>
-                    <label for="NomEmpleado" class="form-label">Empleado Envia: Jorge Perez</label>
+                    <label for="NomEmpleado" class="form-label">Empleado Envia: <?= $_SESSION['Oficina']['nombre']?></label>
+                    <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id']?>'>
                     <label for="" class="form-label">Seleccione el Departamento Destino: </label>
                     <select name="" id="cboDepartamento" class="form-control">
                         <option value="0">------------- Seleccione ------------- ↓</option>
                         <?php
                             for ($i = 0; $i < count($departamentos); $i++) {
                         ?>
-                            <option value="<?= $departamentos[$i]['ID'] ?>"><?= $departamentos[$i]['Nombre'] ?></option>
+                            <option value="<?= $departamentos[$i]['ID'] ?>"><?= $departamentos[$i]['nombre'] ?></option>
                         <?php }  ?>
                     </select>
                     <label for="">Fecha de Registro</label>
@@ -167,3 +171,6 @@
 </script>
 
 </html>
+<?php
+}else{header('location: ../index.php');}
+?>

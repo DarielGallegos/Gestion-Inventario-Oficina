@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(!isset($_SESSION['Oficina']['id'])){
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,3 +46,6 @@
 <script src="./js/swal.min.js"></script>
 <script src="./js/login.js"></script>
 </html>
+<?php
+}else{header('location: ./views/main.php');}
+?>

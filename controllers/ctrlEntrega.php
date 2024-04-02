@@ -1,8 +1,8 @@
 <?php
-include(".././models/mdlEntrega.php"); 
+include("../models/mdlEntrega.php"); 
 class ctrlEntrega extends mdlEntrega{
     public function getAllInsumos(){
-        return $data=mdlEntrega::getAllInsumos();
+        return mdlEntrega::getAllInsumos();
     }
 
     public function getInsumoStock($id){

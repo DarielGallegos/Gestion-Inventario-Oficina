@@ -23,6 +23,7 @@ if (isset($_POST['access'])) {
     extract($_POST);
     switch ($access) {
         case 'getAccess';
+            session_start();
             $Peticion = $controller->getAccess($alias, $passwd);
             if ($Peticion[0] == true) {
                 $response['status'] = 'success';
