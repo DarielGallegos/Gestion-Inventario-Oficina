@@ -18,47 +18,6 @@ if($_SESSION['Oficina']['id']){
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <style>
-        #btnCancelar {
-            background-color: white;
-            color: red;
-            border-color: red;
-        }
-
-        #btnCancelar:hover {
-            background-color: darkred;
-        }
-
-
-        #tabla {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #tabla td,
-        #tabla th {
-            border: 1px solid #CCC7C5;
-            padding: 8px;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #CCC7C5;
-        }
-
-        #tabla tr:hover {
-            background-color: #CCC7C5;
-        }
-
-        #tabla th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #6D6D6D;
-            color: white;
-        }
-    </style>
-
 </head>
 
 <body>

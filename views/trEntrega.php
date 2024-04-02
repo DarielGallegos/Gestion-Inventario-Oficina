@@ -64,9 +64,9 @@ if($_SESSION['Oficina']['id']){
                     <br>
                 </form>
                 <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Mostrar</button>
-                    <button type="button" class="btn btn-outline-primary" id="btnEnviar">Enviar</button>
-                    <button type="button" class="btn btn-outline-primary" id="btnFlush">Flush</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar<i class="nf nf-cod-add"></i></button>
+                    <button type="button" class="btn btn-outline-primary" id="btnEnviar">Enviar<i class="nf nf-fa-send"></i></button>
+                    <button type="button" class="btn btn-outline-primary" id="btnFlush">Flush<i class="nf nf-cod-trash"></i></button>
                 </section>
             </section>
             <!-- Fin Estructura de Formulario Registro -->

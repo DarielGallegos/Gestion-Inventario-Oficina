@@ -14,69 +14,7 @@ if($_SESSION['Oficina']['id']){
     <link rel="stylesheet" href=".././css/globalStyle.css">
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <style>
-        #btnEliminar {
-            background-color: white;
-            color: red;
-            border-color: red;
-        }
 
-        #btnEliminar:hover {
-            background-color: red;
-            color: white;
-        }
-
-
-        form {
-            color: #6D6D6D;
-            background-color: #F0F0F0;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        form input[type="text"],
-        form select {
-            border: 1px solid #6D6D6D;
-        }
-
-        form input[type="text"]:focus,
-        form select:focus {
-            border-color: #6D6D6D;
-            box-shadow: 0 0 5px #6D6D6D;
-        }
-
-        form label {
-            font-weight: bold;
-        }
-
-        #tabla {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #tabla td,
-        #tabla th {
-            border: 1px solid #CCC7C5;
-            padding: 8px;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #CCC7C5;
-        }
-
-        #tabla tr:hover {
-            background-color: #CCC7C5;
-        }
-
-        #tabla th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #6D6D6D;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
