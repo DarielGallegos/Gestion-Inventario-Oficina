@@ -62,7 +62,7 @@
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/dmCatalogoProducto.php">
                                                     <img src=".././img/icons/catalogo-de-producto.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                                                    Producto
+                                                    Catalogo Insumos
                                                 </a>
                                             </div>
                                         </li>
