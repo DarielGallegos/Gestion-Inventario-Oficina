@@ -155,7 +155,10 @@ if ($_SESSION['Oficina']['id']) {
                 </form>
             `,
                     showCancelButton: true,
-                    confirmButtonText: "Aceptar"
+                    confirmButtonText: "Aceptar",
+                    didOpen: () => {
+                        document.getElementById('categoria').value = response.data[0]['ID_CATEGORIA'];
+                    }
                 }).then((res) => {
                     if (res.isConfirmed) {
                         var nombre = document.getElementById('nombre').value;
@@ -181,7 +184,6 @@ if ($_SESSION['Oficina']['id']) {
             });
         }
     </script>
-
     </html>
 <?php
 } else {

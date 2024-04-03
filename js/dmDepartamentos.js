@@ -67,7 +67,7 @@ function editDepartamento(id) {
             html: `
             <form id="form-edit-cat">
                     <label for="" class="form-label">Nombre del Departamento: </label>
-                    <input type="text" class="form-control" name="editNombre" id="nombre" value=` + response.data[0]['nombre'] + `>
+                    <input type="text" class="form-control" name="editNombre" id="nombre" value='${response.data[0]['nombre']}'>
                     <br>
             </form>
     `,
