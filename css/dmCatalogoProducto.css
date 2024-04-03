@@ -1,44 +1,8 @@
-@font-face{
-    font-family: "Poppins";
-    src: url(../fonts/Poppins-Regular.ttf);
-    font-style: normal;
-    font-weight: 400;
-}
-
-body{
-    font-family: 'Poppins';
-    font-size: 16px;
-}
-
 .nuevaTabla {
     background-color: #E1E1E1;
     padding: 20px;
     border-radius: 20px;
-
 }
-
-#btnFlush {
-    background-color: white;
-    color: red;
-    border-color: red;
-}
-
-#btnFlush:hover {
-    background-color: red;
-    color: white;
-}
-
-#btnEnviar {
-    background-color: white;
-    color: rgb(55, 255, 0);
-    border-color: rgb(0, 255, 47);
-}
-
-#btnEnviar:hover {
-    background-color: rgb(4, 255, 0);
-    color: white;
-}
-
 
 #btnEliminar {
     background-color: white;
@@ -49,23 +13,6 @@ body{
 #btnEliminar:hover {
     background-color: red;
     color: white;
-}
-
-#btnCancelar {
-    background-color: white;
-    color: red;
-    border-color: red;
-}
-
-#btnCancelar:hover {
-    background-color: darkred;
-}
-
-form {
-    color: #6D6D6D;
-    background-color: #F0F0F0;
-    padding: 20px;
-    border-radius: 5px;
 }
 
 form input[type="text"],
@@ -109,4 +56,12 @@ form label {
     text-align: center;
     background-color: #6D6D6D;
     color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    text-align: center;
 }

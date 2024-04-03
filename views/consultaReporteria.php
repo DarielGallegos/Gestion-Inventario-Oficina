@@ -12,144 +12,16 @@ if($_SESSION['Oficina']['id']){
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
+    <link rel="stylesheet" href=".././css/consultaReporteria.css">
+    <script src=".././js/consultaReporteria.js"></script>
+
+
 
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <style>
-        .contenedor-cuadrado {
-            width: 200px;
-            height: 100px;
-            background-color: #EFF2F5;
-            position: absolute;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .posicion-1 {
-            top: 25%;
-            left: 60px;
-        }
-
-        .posicion-2 {
-            top: 25%;
-            left: 300px;
-        }
-
-        .posicion-3 {
-            top: 40%;
-            left: 60px;
-        }
-
-        .posicion-4 {
-            top: 40%;
-            left: 300px;
-        }
-
-        .botonver {
-
-            background-color: white;
-            color: #6D6D6D;
-            border-color: #83BDF4;
-            padding: 10px 20px;
-            cursor: pointer;
-            text-align: justify;
-
-        }
-
-        .botonver:hover {
-            background-color: #83BDF4;
-        }
-
-        .posicionAceptados {
-            width: 145px;
-            height: 80px;
-            border: 1px solid #83BDF4;
-            position: absolute;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .posicionaceptados {
-            top: 60%;
-            left: 90px;
-        }
-
-        .textoaceptado {
-
-            position: absolute;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .posicionaceptados1 {
-            top: 70%;
-            left: 90px;
-        }
-
-        .posicionaceptados2 {
-            top: 60%;
-            left: 320px;
-        }
-
-        .posicionaceptados3 {
-            top: 70%;
-            left: 320px;
-        }
-
-        #grafico {
-            margin-top: -3%;
-            margin-left: 850px;
-        }
-
-        #tablaE {
-            font-family: arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            position: absolute;
-            top: 15%;
-            width: 100%;
-            display: none;
-            left: 700px;
-        }
-
-        #tabla {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 45%;
-        }
-
-        #tabla td,
-        #tabla th {
-            border: 1px solid #CCC7C5;
-            padding: 8px;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #CCC7C5;
-        }
-
-        #tabla tr:hover {
-            background-color: #CCC7C5;
-        }
-
-        #tabla th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #6D6D6D;
-            color: white;
-        }
-    </style>
-
-    </style>
-
+   
 </head>
 
 <body onload="dibujarGrafico();">
@@ -249,7 +121,7 @@ if($_SESSION['Oficina']['id']){
 
 </body>
 <script src=".././js/bootstrap.bundle.min.js"></script>
-
+<!--
 <script>
     google.charts.load('current', {
         'packages': ['corechart']
@@ -287,7 +159,7 @@ if($_SESSION['Oficina']['id']){
 
     }
 </script>
-
+-->
 </html>
 <?php
 }else{header('location: ../index.php');}
