@@ -51,7 +51,7 @@ function editCategoria(id) {
             html: `
             <form id="form-edit-cat">
                     <label for="" class="form-label">Nombre de la Categoria</label>
-                    <input type="text" class="form-control" name="editNombre" id="nombre" value=` + response.data[0]['nombre'] + `>
+                    <input type="text" class="form-control" name="editNombre" id="nombre" value='${response.data[0]['nombre']}'>
                     <br>
                     <label for="" class="form-label">Descripcion de la Categoria</label>
                     <textarea class="form-control" name="editDescripcion" id="descripcion" cols="30" rows="10">` + '' + response.data[0]['descripcion'] + '' + `</textarea>
@@ -84,8 +84,6 @@ function editCategoria(id) {
                     }
                 })
             } else {
-                alert("Se cancelo la operacion");
-
             }
         });
     });
