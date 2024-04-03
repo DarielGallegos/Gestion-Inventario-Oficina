@@ -11,88 +11,6 @@ if ($_SESSION['Oficina']['id']) {
     <!DOCTYPE html>
     <html lang="es">
 
-<<<<<<< Updated upstream
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo de Productos</title>
-    <link rel="stylesheet" href=".././css/bootstrap.min.css">
-    <link rel="stylesheet" href=".././css/index.css">
-    <link rel="stylesheet" href=".././css/globalStyle.css">
-
-
-
-    <style>
-        .nuevaTabla {
-            background-color: #E1E1E1;
-            padding: 20px;
-            border-radius: 20px;
-        }
-
-        #btnEliminar {
-            background-color: white;
-            color: red;
-            border-color: red;
-        }
-
-        #btnEliminar:hover {
-            background-color: red;
-            color: white;
-        }
-
-        form input[type="text"],
-        form select {
-            border: 1px solid #6D6D6D;
-        }
-
-        form input[type="text"]:focus,
-        form select:focus {
-            border-color: #6D6D6D;
-            box-shadow: 0 0 5px #6D6D6D;
-        }
-
-        form label {
-            font-weight: bold;
-        }
-
-        #tabla {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #tabla td,
-        #tabla th {
-            border: 1px solid #CCC7C5;
-            padding: 8px;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #CCC7C5;
-        }
-
-        #tabla tr:hover {
-            background-color: #CCC7C5;
-        }
-
-        #tabla th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #6D6D6D;
-            color: white;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        input {
-            text-align: center;
-        }
-    </style>
-</head>
-=======
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +21,6 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
     </head>
->>>>>>> Stashed changes
 
     <body>
         <?php include('.././components/nav-bar.php'); ?>
@@ -229,7 +146,7 @@ if ($_SESSION['Oficina']['id']) {
                     <label for="">Descripcion: </label>
                     <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10">${response.data[0]['descripcion']}</textarea> 
                     <br>
-                    <select name="idCategoria" id="idCategoria" class="form-control" value=${response.data[0]['ID_CATEGORIA']}>
+                    <select name="idCategoria" id="categoria" class="form-control">
                     <option value="0">----Seleccione-----</option>
                         <?php for ($i = 0; $i < count($categorias); $i++) { ?>
                             <option value="<?= $categorias[$i]['ID'] ?>"><?= $categorias[$i]['nombre'] ?></option>
@@ -243,7 +160,7 @@ if ($_SESSION['Oficina']['id']) {
                     if (res.isConfirmed) {
                         var nombre = document.getElementById('nombre').value;
                         var descripcion = document.getElementById('descripcion').value;
-                        var idCat = document.getElementById('idCategoria').value;
+                        var idCat = document.getElementById('categoria').value;
                         idCat = parseInt(idCat);
                         $.post('.././controllers/CtrlCatalogoInsumos.php', {
                             peticion: 'updateInsumo',
