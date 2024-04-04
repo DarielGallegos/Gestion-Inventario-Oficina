@@ -87,6 +87,16 @@
                                             </div>
                                         </li>
                                         <?php } ?>
+                                        <?php if($_SESSION['Oficina']['pdm'] >= 4){?>
+                                        <li>
+                                            <div class="container-fluid ml-4 dropdown-item">
+                                                <a class="navbar-brand" href=".././views/dmArmadoInsumo.php">
+                                                    <img src=".././img/icons/personas.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    Armado de Insumos
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
                                 <?php
