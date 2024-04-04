@@ -1,6 +1,10 @@
 <?php
 session_start();
 if($_SESSION['Oficina']['id']){
+    include($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/controllers/ctrlEntradaInsumos.php');
+    $controller = new CtrlEntradaInsumos();
+    $insumos = $controller->getInsumos();
+    $insumos = $insumos[2];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,9 +16,8 @@ if($_SESSION['Oficina']['id']){
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
-
+    <link rel="stylesheet" href=".././css/nerdfont.css">
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
-
 </head>
 
 <body>
@@ -26,22 +29,21 @@ if($_SESSION['Oficina']['id']){
 
             <!-- Inicio Estructura de Formulario Registro -->
             <section class=" col col-6 col-md-4">
-                <form>
-                    <h2 class="text-center">Formulario de Registro</h2>
-                    <label for="listProducto" class="form-label">Seleccione el producto: </label>
-                    <select name="listProducto" id="listProducto" class="form-control">
-                        <option value="">---------- Seleccione ----------</option>
-                        <option value="1">Rema de Papel</option>
-                        <option value="2">Marcadores</option>
-                        <option value="3">Caja Lapiz Carbon 12 uds.</option>
-                        <option value="4">Tinta para Impresora Canon</option>
-                        <option value="5">Grapadora</option>
-                    </select><br>
-                    <label for="inpCantidad" class="form-label">Ingrese la cantidad: </label>
-                    <input type="text" class="form-control" id="inpCantidad" name="inpCantidad">
+            <form>
+                    <h2 class="text-center">Formulario de Entrega</h2>
+                    <label for="NomEmpleado" class="form-label">Empleado Envia: <?= $_SESSION['Oficina']['nombre']?></label>
+                    <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id']?>'>
+                    <label for="">Fecha de Registro</label>
+                    <input type="date" class="form-control" id="dateEntrega" readonly>
+                    <label for="">Seleccione el archivo de firma:</label>
+                    <input type="file" class="form-control" id="fileFirma">
                     <br>
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar" style="margin-left: 35%">Agregar</button>
                 </form>
+                <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
+                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar<i class="nf nf-cod-add"></i></button>
+                    <button type="button" class="btn btn-outline-primary" id="btnEnviar">Enviar<i class="nf nf-fa-send"></i></button>
+                    <button type="button" class="btn btn-outline-primary" id="btnFlush">Flush<i class="nf nf-cod-trash"></i></button>
+                </section>
             </section>
             <!-- Fin Estructura de Formulario Registro -->
 
@@ -51,10 +53,9 @@ if($_SESSION['Oficina']['id']){
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>ID PRODUCTO</th>
-                            <th>Nombre Producto</th>
-                            <th>Cantidad</th>
+                            <th>Insumo</th>
+                            <th>Cantidad Insumo</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="contentTable">
@@ -65,8 +66,38 @@ if($_SESSION['Oficina']['id']){
         </section>
     </section>
 </body>
+<script src=".././js/jquery-3.7.1.min.js"></script>
 <script src=".././js/bootstrap.bundle.min.js"></script>
-
+<script src=".././js/swal.min.js"></script>
+<script src=".././js/popper.min.js"></script>
+<script src=".././js/trEntradaInsumos.js"></script>
+<script>
+        document.getElementById("btnAgregar").addEventListener("click", () => {
+        var row = document.createElement('tr');
+        row.innerHTML = `
+    <td>        
+        <select class="form-control" name="" id="cboInsumo">
+            <option value="">Seleccione</option>
+        <?php 
+        if(count($insumos) > 0){
+            for ($i = 0; $i < count($insumos); $i++) { ?>
+            <option value=<?= $insumos[$i]['ID'] ?> ><?= $insumos[$i]['nombre'] . " N°. " . $insumos[$i]['ID'] .'-'. $insumos[$i]['ID_INSUMOS_CATALOGO']?></option>
+        <?php } 
+        }
+        ?>
+        </select>
+    </td>
+    <td>
+        <input type="number" class="form-control" name="" id="stock">
+    </td>
+    <td>
+        <button class="btn btn-danger" onclick="deleteInsumo(this)">
+            <i class="nf nf-fa-trash_o"></i>
+        </button>
+    </td>`;
+        document.getElementById("contentTable").prepend(row);
+    });
+</script>
 </html>
 <?php
 }else{header('location: ../index.php');}

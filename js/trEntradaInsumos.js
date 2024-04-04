@@ -6,7 +6,8 @@ window.onload = () => {
     document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ ('0'+today.getDate());
     }
 }
-document.getElementById("btnEnviar").addEventListener('click', () => {
+
+document.getElementById('btnEnviar').addEventListener('click', () => {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -18,7 +19,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
             toast.onmouseleave = Swal.resumeTimer;
         }
     });
-    //EXTRACCION INFORMACION FACTURA
+    //EXTRACCION INFORMACION ENTRADA
     //Inicio Extraccion de Informacion Detalle PreEnvio
     detalle = Array();
     var reg = {
@@ -26,18 +27,18 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
         'cantidad': null,
     }
     var totalInsumos = 0;
-    var nodes = document.getElementById("contentTableDetalle").childNodes;
-    for (var i = 0; i < nodes.length; i++) {
+    var nodes = document.getElementById("contentTable").childNodes;
+    for(var i=0; i<nodes.length; i++){
         var list = nodes[i].childNodes;
         var idInsumo;
         var cantidad;
-        for (var e = 0; e < list.length - 2; e++) {
-            if (list[e].localName === 'td') {
-                if (list[e].childNodes[1].localName === 'select') {
+        for(var e=0; e<list.length - 2; e++){
+            if(list[e].localName === 'td'){
+                if(list[e].childNodes[1].localName === 'select'){
                     var index = list[e].childNodes[1].selectedIndex;
                     idInsumo = list[e].childNodes[1].options;
                     idInsumo = idInsumo[index].value;
-                    if (idInsumo != "") {
+                    if(idInsumo != ""){
                         idInsumo = parseInt(idInsumo);
                     }
                 }
@@ -64,45 +65,40 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     //Fin Extraccion de Informacion Detalle PreEnvio
     //Inicio extraccion de Informacion Cabecera PreEnvio
     var id = parseInt(document.getElementById('idEmpleado').value);
-    var index = document.getElementById("cboDepartamento").selectedIndex;
-    var idDepartamento = document.getElementById("cboDepartamento").options;
-    idDepartamento = parseInt(idDepartamento[index].value);
-    index = document.getElementById("cboPedido").selectedIndex;
     var filePath = document.getElementById("fileFirma").value;
     filePath = filePath.split('\\');
     file = `firmas/` + filePath[2];
-    var idPedido = document.getElementById("cboPedido").options;
-    idPedido = parseInt(idPedido[index].value);
     cabecera = {
         'idEmpleado': id,
-        'idDepartamento': idDepartamento,
         'totalproductos': totalInsumos,
         'firma': file,
-        'idPedido': idPedido
     }
     //Fin extraccion de Informacion Cabecera PreEnvio
     //FIN EXTRACCION INFORMACION ENTREGA
-    if (totalInsumos > 0 && idDepartamento != 0 && filePath[2] != undefined) {
+    if(totalInsumos > 0 && filePath[2] != undefined){
         Swal.fire({
             icon: 'question',
             title: '¿Desea procesar la entrega?',
             text: 'Confirme Peticion',
             showCancelButton: true
         }).then((result) => {
-            if (result.isConfirmed) {
-                $.post('.././controllers/ctrlEntrega.php', {
-                    request: "insertEntrega",
-                    cabecera:cabecera,
+            if(result.isConfirmed){
+                $.post('.././controllers/ctrlEntradaInsumos.php', {
+                    peticion: 'insertEntrada',
+                    cabecera: cabecera,
                     detalle: detalle
-                }).done((response) => {
-                    if(response.status = 'success'){
+                }).done((result) => {
                         Toast.fire({
                             icon: 'success',
                             text: 'Transaccion Procesada Correctamente'
                         }).then(() => {
                             location.reload();
-                        })   
-                    }
+                        })    
+                }).fail((err) => {
+                    Toast.fire({
+                        icon: 'error',
+                        text: 'Error al procesar Transaccion'
+                    })
                 });
             }
         });
@@ -110,10 +106,11 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
         Swal.fire({
             icon: 'warning',
             title: 'Advertencia',
-            text: 'Favor Agregar Insumos Y Llenar la Cabecera de la Entrega de Insumos (Si ingresa valores negativos, no se insertaran)'
+            text: 'Favor Agregar Insumos Y Llenar la Cabecera de Entrada de Insumos (Si ingresa valores negativos, no se insertaran)'
         });
     }
 });
+
 function deleteInsumo(button) {
     var row = button.closest("tr");
     row.parentNode.removeChild(row);
@@ -124,7 +121,7 @@ document.getElementById("btnFlush").addEventListener("click", () => {
 });
 
 function flushData(){
-    var list = document.getElementById("contentTableDetalle");
+    var list = document.getElementById("contentTable");
     while(list.firstChild){
         list.removeChild(list.firstChild);
     }

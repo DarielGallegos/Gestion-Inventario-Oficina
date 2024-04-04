@@ -14,7 +14,7 @@ if ($_SESSION['Oficina']['id']) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catalogo de Productos</title>
+        <title>Catalogo de Insumos</title>
         <link rel="stylesheet" href=".././css/bootstrap.min.css">
         <link rel="stylesheet" href=".././css/index.css">
         <link rel="stylesheet" href=".././css/globalStyle.css">
@@ -25,7 +25,7 @@ if ($_SESSION['Oficina']['id']) {
     <body>
         <?php include('.././components/nav-bar.php'); ?>
         <section class="mt-container container-fluid">
-            <h2 class="text-center">Catalogo Productos - Registro</h2><br>
+            <h2 class="text-center">Catalogo Insumos - Registro</h2><br>
             <section class="row">
                 <section class="col col-4">
                     <form id="form-catalogo-insumo">

@@ -75,7 +75,7 @@ class mdlEntrega extends connectMySQL
             if($statement->execute()){
                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             }            
-            for($i = 0; $i <= count($detalle); $i++){
+            for($i = 0; $i < count($detalle); $i++){
                 $statement = $conn->prepare($queryDetalle);
                 $statement->bindParam(1,$result[0]['ID']);
                 $rgn = $i+1;
