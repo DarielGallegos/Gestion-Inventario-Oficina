@@ -24,14 +24,14 @@ if($_SESSION['Oficina']['id']){
     <?php include('.././components/nav-bar.php'); ?>
 
     <section class="mt-container container-fluid">
-        <h2 class="text-center">Registro de Productos</h2>
+        <h2 class="text-center">Ingreso de Insumos</h2>
         <section class="container-fluid row gx-5 px-4">
 
             <!-- Inicio Estructura de Formulario Registro -->
             <section class=" col col-6 col-md-4">
             <form>
-                    <h2 class="text-center">Formulario de Entrega</h2>
-                    <label for="NomEmpleado" class="form-label">Empleado Envia: <?= $_SESSION['Oficina']['nombre']?></label>
+                    <h2 class="text-center">Formulario de Entrada</h2>
+                    <label for="NomEmpleado" class="form-label">Empleado: <?= $_SESSION['Oficina']['nombre']?></label>
                     <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id']?>'>
                     <label for="">Fecha de Registro</label>
                     <input type="date" class="form-control" id="dateEntrega" readonly>
