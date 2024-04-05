@@ -84,8 +84,7 @@
     }
 
 
-    else if($decoded_body != null){
-        
+    if(isset($_POST['tipoRegistro'])){
         header("Content-Type: application/json; charset=utf-8");
         $response = array(
             'status' => 'error',
@@ -96,7 +95,7 @@
         extract($_POST);
         switch($tipoRegistro){
             case 'pedidoAceptar':
-                $request = $controller->setPedidoAceptar($decoded_body->$tipoRegistro,$decoded_body->$ped_id);
+                $request = $controller->setPedidoAceptar($tipoRegistro,$ped_id);
                 if($request[0]){
                     $response['status'] = "success";
                     $response['msg'] = $request[1];
@@ -110,7 +109,7 @@
             break;
 
             case 'pedidoRechazar':
-                $request = $controller->setPedidoRechazar($decoded_body->$tipoRegistro,$decoded_body->$ped_id);
+                $request = $controller->setPedidoRechazar($tipoRegistro,$ped_id);
                 if($request[0]){
                     $response['status'] = "success";
                     $response['msg'] = $request[1];
@@ -123,13 +122,5 @@
                 echo json_encode($response);
             break;
         }
-    } else {
-
-        $response['status'] = "error";
-        $response['msg'] = "Error";
-        $response['data'] = $decoded_body;
-                
-        echo json_encode($response);
     }
-
 ?>

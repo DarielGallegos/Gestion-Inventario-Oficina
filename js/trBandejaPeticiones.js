@@ -175,38 +175,34 @@ function funGetBandejaPeticionesBusca(e) {
 }
 
 function funActualizarPedido(estado) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
     const ped_id = document.getElementById("in_det_ped_id").value;
     let tipoRegistro = 'pedidoAceptar'
     if(estado == 2) {
         tipoRegistro = 'pedidoRechazar'
     }
-
-    let url = "../controllers/ctrlBandejaPeticiones.php";
-    let body = {
+    $.post('../controllers/ctrlBandejaPeticiones.php', {
         tipoRegistro: tipoRegistro,
         ped_id: parseInt(ped_id)
-    };
-
-    console.log(body);
-
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-            'tipoRegistro': tipoRegistro,
-            'ped_id': parseInt(ped_id)
+    }).done((response) => {
+        Toast.fire({
+            icon: 'success',
+            text: 'Actualizacion de Pedido Realizada'
+        }).then((solve) => {
+            location.reload();
         })
-    }).then(response => {
-        console.log(response)
-        response.json()
     })
-    .then(data => {
-        if(data.status != "success"){
-            console.log(data.msg)
-            return;
-        }
-
-        console.log(data.msg)
-    });
 }
 
 funGetBandejaPeticiones();

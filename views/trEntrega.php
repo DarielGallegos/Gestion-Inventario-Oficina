@@ -26,7 +26,7 @@ if ($_SESSION['Oficina']['id']) {
         $data = $data[2];
         $departamentos = $controller->getDepartamentos();
         $departamentos = $departamentos[2];
-        $pedido = $controller->getPedidos(1);
+        $pedido = $controller->getPedidos(2);
         $pedido = $pedido[2];
         $arreglo = [];
         ?>

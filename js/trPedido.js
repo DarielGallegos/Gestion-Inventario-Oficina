@@ -101,7 +101,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     if (cabecera['totalproductos'] > 0 && filePath[2] != undefined) {
         Swal.fire({
             icon: 'question',
-            title: '¿Desea procesar la entrega?',
+            title: '¿Desea procesar el Pedido?',
             text: 'Confirme Peticion',
             showCancelButton: true
         }).then((result) => {
