@@ -1,24 +1,48 @@
 <?php
-include(".././repository/connectMySQL.php");
+include($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/repository/connectMySQL.php');
 class mdlPedido extends connectMySQL{
-    public function getPedidos($status){
-        $query = 'CALL getCabeceraPedidoOne(?)';
-        try{
+    public function getAllInsumos()
+    {
+        $query = 'CALL stockInsumoGet()';
+        try {
             $conn = connectMySQL::getInstance()->createConnection();
             $statement = $conn->prepare($query);
-            $statement->bindParam(1, $status);
-            if($statement->execute()){
+            if ($statement->execute()) {
                 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            }else{
+            } else {
                 $result = $statement->errorInfo();
             }
-            if(count($result)>0){
-                return [true, "Pedidos Encontrado", $result];
-            }else{
-                return [true, "No se encontraron pedidos", $result];
+            return [true, 'Exito al solicitar informacion', $result];
+        } catch (PDOException $e) {
+            return [false, 'Error al solicitar informacion', $e->getMessage()];
+        }
+    }
+    public function insertPedido($cabecera, $detalle){
+        $sqlCabecera = "CALL pedidoCabeceraInsert(?,?,?,?)";
+        $sqlDetalle = "CALL pedidoDetalleInsert(?,?,?,?)";
+        try{
+            $conn = connectMySQL::getInstance()->createConnection();
+            $statement = $conn->prepare($sqlCabecera);
+            $statement->bindParam(1, $cabecera['idEmpleado']);
+            $statement->bindParam(2, $cabecera['idDepartamento']);
+            $statement->bindParam(3, $cabecera['totalproductos']);
+            $statement->bindParam(4, $cabecera['firma']);
+            if($statement->execute()){
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             }
+            for($i=0; $i<count($detalle); $i++){
+                $statement = $conn->prepare($sqlDetalle);
+                $statement->bindParam(1, $result[0]['ID']);
+                $rgn = $i+1;
+                $statement->bindParam(2, $rgn);
+                $statement->bindParam(3, $detalle[$i]['idInsumo']);
+                $statement->bindParam(4, $detalle[$i]['cantidad']);
+                $statement->execute();
+                $statement = null;
+            }
+            return [true, "Exito al insertar pedido", $result];
         }catch(PDOException $e){
-            return [false, "Error al ejecutar consulta", $e->getMessage()];
+            return [false, "Error al procesar consulta", $e->getMessage()];
         }
     }
 }

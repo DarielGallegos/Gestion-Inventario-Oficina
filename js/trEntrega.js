@@ -41,7 +41,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
                         idInsumo = parseInt(idInsumo);
                     }
                 }
-                if (list[e].childNodes[1].localName === 'input') {
+                if (list[e].childNodes[1].localName === 'input' && (list[e].childNodes[1].value <= parseInt(list[e].childNodes[1].max))) {
                     if(list[e].childNodes[1].value>0){
                         cantidad = list[e].childNodes[1].value;
                     }
@@ -82,7 +82,29 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     }
     //Fin extraccion de Informacion Cabecera PreEnvio
     //FIN EXTRACCION INFORMACION ENTREGA
-    if (totalInsumos > 0 && idDepartamento != 0 && filePath[2] != undefined) {
+    var detalleFiltrado = [];
+    for (var x = 0; x < detalle.length; x++) {
+        if(detalleFiltrado.length === 0){
+            detalleFiltrado.push(detalle[x]);
+        }else{
+            if(x>=1){
+                var flag = 1;
+                for(var y=0; y<detalleFiltrado.length;y++){
+                    if(detalleFiltrado[y]['idInsumo'] === detalle[x]['idInsumo']){
+                        flag = false;
+                    }else{
+                        if(y === detalleFiltrado.length-1 && flag){
+                            detalleFiltrado.push(detalle[x]);
+                            y++;
+                        }
+                    }
+                }
+                flag=true;
+            }
+        }
+    }
+    cabecera['totalproductos'] = detalleFiltrado.length;
+    if (cabecera['totalproductos'] > 0  && idDepartamento != 0 && filePath[2] != undefined) {
         Swal.fire({
             icon: 'question',
             title: '¿Desea procesar la entrega?',
@@ -93,7 +115,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
                 $.post('.././controllers/ctrlEntrega.php', {
                     request: "insertEntrega",
                     cabecera:cabecera,
-                    detalle: detalle
+                    detalle: detalleFiltrado
                 }).done((response) => {
                     if(response.status = 'success'){
                         Toast.fire({

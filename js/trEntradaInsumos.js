@@ -75,7 +75,29 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
     }
     //Fin extraccion de Informacion Cabecera PreEnvio
     //FIN EXTRACCION INFORMACION ENTREGA
-    if(totalInsumos > 0 && filePath[2] != undefined){
+    var detalleFiltrado = [];
+    for (var x = 0; x < detalle.length; x++) {
+        if(detalleFiltrado.length === 0){
+            detalleFiltrado.push(detalle[x]);
+        }else{
+            if(x>=1){
+                var flag = 1;
+                for(var y=0; y<detalleFiltrado.length;y++){
+                    if(detalleFiltrado[y]['idInsumo'] === detalle[x]['idInsumo']){
+                        flag = false;
+                    }else{
+                        if(y === detalleFiltrado.length-1 && flag){
+                            detalleFiltrado.push(detalle[x]);
+                            y++;
+                        }
+                    }
+                }
+                flag=true;
+            }
+        }
+    }
+    cabecera['totalproductos'] = detalleFiltrado.length;
+    if(cabecera['totalproductos'] > 0 && filePath[2] != undefined){
         Swal.fire({
             icon: 'question',
             title: '¿Desea procesar la entrega?',
@@ -86,7 +108,7 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
                 $.post('.././controllers/ctrlEntradaInsumos.php', {
                     peticion: 'insertEntrada',
                     cabecera: cabecera,
-                    detalle: detalle
+                    detalle: detalleFiltrado
                 }).done((result) => {
                         Toast.fire({
                             icon: 'success',
