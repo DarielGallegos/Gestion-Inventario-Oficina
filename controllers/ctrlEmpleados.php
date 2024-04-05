@@ -70,10 +70,7 @@ if(isset($_POST['registro'])){
                 break;
 
             case 'updateEmpleados':
-                $listGenero = isset($_POST['listGenero']) ? $_POST['listGenero'] : null;
-                $fechaN = isset($_POST['fechaN']) ? $_POST['fechaN'] : null;      
-
-                 $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN, $idPed, $id);
+                 $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN, $idDep, $id);
                 if($request[0]){
                     $response['status'] = "success";
                     $response['msg'] = $request[1];
@@ -97,7 +94,7 @@ if(isset($_POST['registro'])){
                     }else{
                         $response['status'] = 'error';
                         $response['msg'] = $request[1];
-                        $response['data'] =null;
+                        $response['data'] =$request[2];
                     }
                     echo json_encode($response);   
                     break;
