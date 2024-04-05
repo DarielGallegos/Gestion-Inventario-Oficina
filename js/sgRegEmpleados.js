@@ -1,15 +1,13 @@
 
 $('#form-empeladoa').on('submit',(e)=>{
     e.preventDefault();
-    console.log(new FormData);
-
         if($('#inpnombre').val != "" && $('#inpapellido1').val != "" &&
          $('#inpapellido2').val != "" && $('#inpdni').val != "" &&
          $('#inptelefono').val !="" && $('#inpdireccion').val != ""&&
-         $('#listGenero').val != "" && $('#inpfechaN').val != ""){
+         $('#listGenero').val != "" && $('#inpfechaN').val != "" &&
+         $('#listDepartamentos') != "0"){
 
             var registro = document.getElementById("registro").value;
-
             var Nombres = document.getElementById("inpnombre").value;
             var Apellido1 = document.getElementById("inpapellido1").value;
             var Apellido2 = document.getElementById("inpapellido2").value;
@@ -18,8 +16,8 @@ $('#form-empeladoa').on('submit',(e)=>{
             var Direccion = document.getElementById("inpdireccion").value;
             var Genero = document.getElementById("listGenero").value;
             var FechaN = document.getElementById("inpfechaN").value;
-          
-            $.post('.././controllers/CtrlEmpleados.php', {
+            var idDep = document.getElementById("listDepartamentos").value;
+             $.post('.././controllers/CtrlEmpleados.php', {
                 registro: registro,
                 nombre: Nombres,
                 apellido1: Apellido1,
@@ -28,10 +26,9 @@ $('#form-empeladoa').on('submit',(e)=>{
                 telefono: Telefono,
                 direccion: Direccion,
                 listGenero: Genero,
-                fechaN: FechaN
-
+                fechaN: FechaN,
+                idDep: idDep
             }).done((response)=>{
-
                 if (response.status === 'success') {
                     Swal.fire({
                         text: 'Registro Insertado',
@@ -49,8 +46,13 @@ $('#form-empeladoa').on('submit',(e)=>{
                         title: 'Error',
                     });
                 }
+            }).fail((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    text: err
+                })
             })
-         }
+    } 
 });
 
 /*
