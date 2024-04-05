@@ -1,0 +1,18 @@
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+.grafico {
+    width: 30%;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+.grafico {
+    width: 40%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 1px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.30);
+}
