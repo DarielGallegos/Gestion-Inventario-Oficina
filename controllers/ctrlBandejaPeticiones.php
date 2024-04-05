@@ -85,7 +85,6 @@
 
 
     if(isset($_POST['tipoRegistro'])){
-        
         header("Content-Type: application/json; charset=utf-8");
         $response = array(
             'status' => 'error',

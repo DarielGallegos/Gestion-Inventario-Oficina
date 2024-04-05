@@ -1,10 +1,12 @@
-function ventanaFormaPeticion(prm_id) {
-    console.log(prm_id)
+function ventanaFormaPeticion(prm_ped_id) {
+    console.log(prm_ped_id)
+    funGetBandejaPeticionesDetalle(prm_ped_id);
+
     let ventana = document.getElementById('ventana_forma_id');
     ventana.classList.remove('oculto');
 }
 
-function cerrarVentanaPeticion(e){
+function cerrarVentanaPeticion(e) {
     e.preventDefault();
     let ventana = document.getElementById('ventana_forma_id');
     ventana.classList.add('oculto');
@@ -184,6 +186,7 @@ function funActualizarPedido(estado) {
             toast.onmouseleave = Swal.resumeTimer;
         }
     });
+
     const ped_id = document.getElementById("in_det_ped_id").value;
     let tipoRegistro = 'pedidoAceptar'
     if(estado == 2) {

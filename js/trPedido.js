@@ -1,9 +1,9 @@
 var today = new Date();
 window.onload = () => {
-    if(today.getDate > 10){
-        document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ (today.getDate());
-    }else{
-    document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ ('0'+today.getDate());
+    if (today.getDate > 10) {
+        document.getElementById("dateEntrega").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)) + '-' + (today.getDate());
+    } else {
+        document.getElementById("dateEntrega").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)) + '-' + ('0' + today.getDate());
     }
 }
 document.getElementById("btnEnviar").addEventListener('click', () => {
@@ -31,7 +31,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
         var list = nodes[i].childNodes;
         var idInsumo;
         var cantidad;
-        for (var e = 0; e < list.length-1; e++) {
+        for (var e = 0; e < list.length - 1; e++) {
             if (list[e].localName === 'td') {
                 if (list[e].childNodes[1].localName === 'select') {
                     var index = list[e].childNodes[1].selectedIndex;
@@ -42,7 +42,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
                     }
                 }
                 if (list[e].childNodes[1].localName === 'input' && (list[e].childNodes[1].value <= parseInt(list[e].childNodes[1].max))) {
-                    if(list[e].childNodes[1].value>0){
+                    if (list[e].childNodes[1].value > 0) {
                         cantidad = list[e].childNodes[1].value;
                     }
                 }
@@ -78,22 +78,22 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
     //FIN EXTRACCION INFORMACION ENTREGA
     var detalleFiltrado = [];
     for (var x = 0; x < detalle.length; x++) {
-        if(detalleFiltrado.length === 0){
+        if (detalleFiltrado.length === 0) {
             detalleFiltrado.push(detalle[x]);
-        }else{
-            if(x>=1){
+        } else {
+            if (x >= 1) {
                 var flag = 1;
-                for(var y=0; y<detalleFiltrado.length;y++){
-                    if(detalleFiltrado[y]['idInsumo'] === detalle[x]['idInsumo']){
+                for (var y = 0; y < detalleFiltrado.length; y++) {
+                    if (detalleFiltrado[y]['idInsumo'] === detalle[x]['idInsumo']) {
                         flag = false;
-                    }else{
-                        if(y === detalleFiltrado.length-1 && flag){
+                    } else {
+                        if (y === detalleFiltrado.length - 1 && flag) {
                             detalleFiltrado.push(detalle[x]);
                             y++;
                         }
                     }
                 }
-                flag=true;
+                flag = true;
             }
         }
     }
@@ -108,16 +108,16 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
             if (result.isConfirmed) {
                 $.post('.././controllers/ctrlPedido.php', {
                     peticion: "insertPedido",
-                    cabecera:cabecera,
+                    cabecera: cabecera,
                     detalle: detalleFiltrado
                 }).done((response) => {
-                    if(response.status = 'success'){
+                    if (response.status = 'success') {
                         Toast.fire({
                             icon: 'success',
                             text: 'Transaccion Procesada Correctamente'
                         }).then(() => {
                             location.reload();
-                        })   
+                        })
                     }
                 });
             }
@@ -130,18 +130,33 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
         });
     }
 });
+
+
 function deleteInsumo(button) {
     var row = button.closest("tr");
     row.parentNode.removeChild(row);
+   
+    let numrows = document.querySelectorAll('.dynamic_row');
+
+    if(numrows.length <= 0) {
+        let div_msg_vacio = document.getElementById('div_msg_vacio');
+        if(div_msg_vacio) {
+            div_msg_vacio.classList.remove('oculto');
+        }
+    }
 }
 
 document.getElementById("btnFlush").addEventListener("click", () => {
     flushData();
 });
 
-function flushData(){
+function flushData() {
     var list = document.getElementById("contentTable");
-    while(list.firstChild){
+    while (list.firstChild) {
         list.removeChild(list.firstChild);
+    }
+    let div_msg_vacio = document.getElementById('div_msg_vacio');
+    if(div_msg_vacio) {
+        div_msg_vacio.classList.remove('oculto');
     }
 }

@@ -136,6 +136,15 @@ document.getElementById('btnEnviar').addEventListener('click', () => {
 function deleteInsumo(button) {
     var row = button.closest("tr");
     row.parentNode.removeChild(row);
+    
+    let numrows = document.querySelectorAll('.dynamic_row');
+
+    if(numrows.length <= 0) {
+        let div_msg_vacio = document.getElementById('div_msg_vacio');
+        if(div_msg_vacio) {
+            div_msg_vacio.classList.remove('oculto');
+        }
+    }
 }
 
 document.getElementById("btnFlush").addEventListener("click", () => {
@@ -146,5 +155,10 @@ function flushData(){
     var list = document.getElementById("contentTable");
     while(list.firstChild){
         list.removeChild(list.firstChild);
+    }
+
+    let div_msg_vacio = document.getElementById('div_msg_vacio');
+    if(div_msg_vacio) {
+        div_msg_vacio.classList.remove('oculto');
     }
 }

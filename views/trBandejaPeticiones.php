@@ -18,7 +18,6 @@ if ($_SESSION['Oficina']['id']) {
 
     <body>
         <?php include('.././components/nav-bar.php'); ?>
-
         <section class="mt-container container-fluid">
             <h2 class="text-center">BANDEJA PETICIONES</h2>
             <div class="card_container">
@@ -68,7 +67,6 @@ if ($_SESSION['Oficina']['id']) {
     <script src=".././js/jquery-3.7.1.min.js"></script>
     <script src=".././js/swal.min.js"></script>
     <script src=".././js/trBandejaPeticiones.js"></script>
-
     </html>
 <?php
 } else {
