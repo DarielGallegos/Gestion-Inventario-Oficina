@@ -30,28 +30,8 @@ if($_SESSION['Oficina']['id']){
             </div>
 
             <h5>Peticiones Pendientes: 2</h5>
-            <div class="tbl_wrapper">
-                <div class="card text-bg-success mb-3" style="max-width: 38rem;">
-                    <div class="card-header"><span class="float-start">Petición # 1</span><button class="float-end" onclick="ventanaFormaPeticion(event)"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-text">Departamento: </h6>
-                        <h6 class="card-text">Fecha:</h6>
-                        <h6 class="card-text">Productos Totales:</h6>
-                        <h6 class="card-text">Empleado ID: </h6>
-                    </div>
-                </div>
-
-                <div class="card text-bg-primary mb-3" style="max-width: 38rem;">
-                    <div class="card-header"><span class="float-start">Petición # 2</span><button class="float-end" onclick="ventanaFormaPeticion(event)"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-text">Departamento: </h6>
-                        <h6 class="card-text">Fecha: </h6>
-                        <h6 class="card-text">Productos Totales:</h6>
-                        <h6 class="card-text">Empleado ID: </h6>
-                    </div>
-                </div>
+            <div id="cards_container" class="tbl_wrapper">
+                
             </div>
         </div>
 
@@ -60,39 +40,7 @@ if($_SESSION['Oficina']['id']){
             <div class="mb-3">
                 <label for="listado" class="form-label">Detalles del Pedido</label>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID Producto</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Rema de Papel</td>
-                        <td>Papelería</td>
-                        <td>4</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Marcadores</td>
-                        <td>Lapicería</td>
-                        <td>6</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Grapadora</td>
-                        <td>Oficina</td>
-                        <td>1</td>
-                    </tr>
-
-                </tbody>
-            </table>
+            
             <form class="float-end">
                 <input class="oculto" type="text" value="2">
                 <button class="btn btn-secondary" onclick="cerrarVentanaPeticion(event)">Cancelar</button>
