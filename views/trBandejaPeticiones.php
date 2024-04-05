@@ -20,19 +20,22 @@ if($_SESSION['Oficina']['id']){
     <?php include('.././components/nav-bar.php'); ?>
 
     <section class="mt-container container-fluid">
-
+    <h2 class="text-center">BANDEJA PETICIONES</h2>
         <div class="card_container">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <button class="btn btn-outline-secondary"><i class="fa fa-filter" aria-hidden="true"></i></button>
-
+                <input oninput="funGetBandejaPeticionesBusca(event)" type="text" class="form-control" placeholder="🔍 Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
             </div>
 
-            <h5>Peticiones Pendientes: 2</h5>
+            <h5>Peticiones Pendientes: <span id="cant_pedidos"></span></h5>
             <div id="cards_container" class="tbl_wrapper">
+
+
                 
             </div>
+            <div id='div_msg_vacio' class='position-relative oculto'>
+                    <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                    <p class='text-center'>No hay elementos.</p>
+                </div>
         </div>
 
 
@@ -40,13 +43,26 @@ if($_SESSION['Oficina']['id']){
             <div class="mb-3">
                 <label for="listado" class="form-label">Detalles del Pedido</label>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Insumos</th>
+                        <th scope="col">Insumos</th>
+                        <!-- <th scope="col">Categoria</th> -->
+                        <th scope="col">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_pedidos_detalle" class="table-group-divider">
+                   
+                </tbody>
+            </table>
             
-            <form class="float-end">
-                <input class="oculto" type="text" value="2">
+            <div class="float-end">
+                <input id="in_det_ped_id" class="oculto" type="text">
                 <button class="btn btn-secondary" onclick="cerrarVentanaPeticion(event)">Cancelar</button>
-                <button class="btn btn-danger">Rechazar</button>
-                <button class="btn btn-primary">Aceptar</button>
-            </form>
+                <button class="btn btn-danger" onclick="funActualizarPedido(2)" >Rechazar</button>
+                <button class="btn btn-primary" onclick="funActualizarPedido(1)">Aceptar</button>
+            </div>
         </div>
     </section>
 </body>
