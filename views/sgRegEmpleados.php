@@ -1,6 +1,11 @@
 <?php
 session_start();
 if($_SESSION['Oficina']['id']){
+    include('../controllers/ctrlEmpleados.php');
+    $controller = new CtrlEmpleados();
+    $empleados = $controller->getEmpleados();
+    $empleados = $empleados[2];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +18,7 @@ if($_SESSION['Oficina']['id']){
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
-
+    <link rel="stylesheet" href=".././css/nerdfont.css">
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -29,42 +34,57 @@ if($_SESSION['Oficina']['id']){
         <div class="container-fluid row gx-5 px-4">
             <!-- Inicio registro de empleados -->
             <section class="col col-6 col-md-4">
-                <form>
+                <form id="form-empeladoa">
+
+                <input type="hidden" id="registro"name="registro" value="insertEmpleado">
                     <h2 class="text-center">Formulario de empleados</h2>
-                    <label for="inpnombre" class="form-label">Ingrese su DNI: </label>
-                    <input type="text" class="form-control" id="inpnombre" name="inpnombre">
+                   
 
-                    <label for="inpnombre" class="form-label">Ingrese su Nombre: </label>
-                    <input type="text" class="form-control" id="inpnombre" name="inpnombre">
+                    <label for="inpnombre" class="form-label"> Nombres: </label>
+                    <input type="text" class="form-control" id="inpnombre" name="nombre">
 
-                    <label for="inpapellidos" class="form-label">Ingrese su Apellido: </label>
-                    <input type="text" class="form-control" id="inpapellidos" name="inpapellidos">
+                    <label for="inpapellido1" class="form-label">Primer apellido: </label>
+                    <input type="text" class="form-control" id="inpapellido1" name="apellido1">
 
+                    <label for="inpapellido2" class="form-label">Segundo apellido: </label>
+                    <input type="text" class="form-control" id="inpapellido2" name="apellido2">
 
+                    <label for="inpdni" class="form-label">DNI: </label>
+                    <input type="text" class="form-control" id="inpdni" name="dni">
 
-                    <label for="list-genero" class="form-label">Ingrese su Genero: </label>
+                    <label for="inptelefono" class="form-label">Telefono: </label>
+                    <input type="text" class="form-control" id="inptelefono" name="telefono">
+
+                    <label for="inpdireccion" class="form-label">Direccion: </label>
+                    <input type="text" class="form-control" id="inpdireccion" name="direccion">
+
+                    <label for="list-genero" class="form-label">Genero: </label>
                     <select name="listGenero" id="listGenero" class="form-control">
                         <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
+                        <option value="F">Femenino</option>    
                     </select>
 
                     <br>
                     <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
-                    <input type="date" class="form-control" id="inpfechaN" name="inpfechaN">
+                    <input type="date" class="form-control" id="inpfechaN" name="fechaN">
                     <br>
-                    <label class="form-label"><strong>*Informacion de contacto</strong></label>
+                  <!--  <label for="list-dpto" class="form-label">Departamento: </label> 
+                    <select name="listDpto" id="listDpto" class="form-control">
+                         
+                    </select>
+                    -->
                     <br>
-                    <label for="inptelefono" class="form-label">Ingrese su telefono: </label>
-                    <input type="text" class="form-control" id="inptelefono" name="inptelefono">
+                    
 
-                    <label for="inpcorreo" class="form-label">Ingrese su correo: </label>
-                    <input type="text" class="form-control" id="inpcorreo" name="inpcorreo">
-                </form>
-                <br>
-                <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
+                    <button type="submit" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
                     <button type="button" class="btn btn-outline-primary" id="btnCancelar">Cancelar</button>
-                </section>
+                </form>
+                <!--Fin del formulario-->
+                
+                <br>
+                <!--<section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
+                    
+                </section>-->
             </section>
             <!-- Fin registro de empleados -->
 
@@ -73,17 +93,42 @@ if($_SESSION['Oficina']['id']){
                 <table class="table table-hover" id="tabla">
                     <thead>
                         <tr>
+                            <th>ID</th>
+                            <th>Nombres</th>
+                            <th>Apellido Paterno</th>
+                            <th>Apellido Materno</th>
                             <th>DNI</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Genero</th>
-                            <th>Edad</th>
                             <th>Telefono</th>
-                            <th>Correo</th>
+                            <th>Direccion</th>
+                            <th>Genero</th>
+                            <th>Fecha</th>  
+                          <!--  <th>Departamento</th>nueva-->
+                            <th>Acciones</th>        
                         </tr>
                     </thead>
                     <tbody id="contentTable">
-                        <!-- Contenido de la tabla se agregará aquí -->
+                    <?php for($i = 0;$i < count($empleados);$i++){?>
+                                <tr>
+                                <td><?= $empleados[$i]['ID'] ?></td>
+                                <td><?= $empleados[$i]['nombres'] ?></td>
+                                <td><?= $empleados[$i]['apellido-paterno'] ?></td>
+                                <td><?= $empleados[$i]['apellido-materno'] ?></td>
+                                <td><?= $empleados[$i]['n-identidad'] ?></td>
+                                <td><?= $empleados[$i]['n-telefono'] ?></td>
+                                <td><?= $empleados[$i]['direccion'] ?></td>
+                                <td><?= $empleados[$i]['genero'] ?></td>
+                                <td><?= $empleados[$i]['fecha-nacimiento'] ?></td>
+                             <!--   <td><?= $empleados[$i]['Departamento'] ?></td>nueva-->
+                                <td>
+                                    <button class="btn btn-warning" onclick="editEmpleado(<?= $empleados[$i]['ID'] ?>)">
+                                        <i class="nf nf-md-pencil_outline"></i>
+                                    </button>
+                                    <button class="btn btn-danger" onclick="deleteEmpleado(<?= $empleados[$i]['ID'] ?>)">
+                                        <i class="nf nf-fa-trash_o"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php }?>
                     </tbody>
                 </table>
             </section>
@@ -91,8 +136,113 @@ if($_SESSION['Oficina']['id']){
         </div>
     </section>
 
-    <script src=".././js/bootstrap.bundle.min.js"></script>
 </body>
+    <script src=".././js/jquery-3.7.1.min.js"></script>
+    <script src=".././js/swal.min.js"></script>
+    <script src=".././js/bootstrap.bundle.min.js"></script>
+    <script src=".././js/popper.min.js"></script>
+    <script src=".././js/sgRegEmpleados.js"></script>
+
+    <script>
+function editEmpleado(id){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+
+    $.post('.././controllers/CtrlEmpleados.php', {
+    registro: 'getEmpleados',
+    id:id
+}).done((response) => {
+    Swal.fire({
+        title: 'Formulario de actualizacion de Empleados',
+        html: `
+            <form id="form-edit-emp">
+                <label for="" class="form-label">Nombres: </label>
+                <input type="text" class="form-control" name="editNombre" id="nombre" value='${response.data[0]['nombres']}'>
+                <br>
+                <label for="apellido1" class="form-label">Primer apellido: </label>
+                <input type="text" class="form-control" id="apellido1" name="apellido1" value="${response.data[0]['apellido-paterno']}">
+                <br>
+                <label for="inpapellido2" class="form-label">Segundo apellido: </label>
+                    <input type="text" class="form-control" id="apellido2" name="apellido2 "value='  ${response.data[0]['apellido-materno']}'>
+                    <br>
+                    <label for="inpdni" class="form-label">DNI: </label>
+                    <input type="text" class="form-control" id="dni" name="dni" value=' ${response.data[0]['n-identidad']}'>
+                    <br>
+                    <label for="inptelefono" class="form-label">Telefono: </label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" value=' ${response.data[0]['n-telefono']}'>
+                    <br>
+                    <label for="inpdireccion" class="form-label">Direccion: </label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" value=' ${response.data[0]['direccion']}'>
+                    <br>
+                    <select name="listGenero" id="listGenero" class="form-control">
+                    <option value="M" ${response.data[0]['genero'] === 'M' ? 'selected' : ''}>Masculino</option>
+                    <option value="F" ${response.data[0]['genero'] === 'F' ? 'selected' : ''}>Femenino</option>    
+                </select>
+                <br>
+                <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
+                <input type="date" class="form-control" id="fechaN" name="fechaN" value='${response.data[0]['fecha-nacimiento']}'>
+                <br>
+            </form>
+        `,
+        showCancelButton: true,
+        confirmButtonText: "Aceptar",
+
+    }).then((res)=>{
+        if(res.isConfirmed){
+
+                var nombre = document.getElementById('nombre').value;
+                var apellidosP = document.getElementById('apellido1').value;
+                var apellidosM = document.getElementById('apellido2').value;
+                var dnni = document.getElementById('dni').value;
+                var telefonos = document.getElementById('telefono').value;
+                var direccione = document.getElementById('direccion').value; 
+                var generos = document.getElementById('listGenero').value;
+                var f_nac = document.getElementById('fechaN').value;
+
+            $.post('.././controllers/CtrlEmpleados.php', {
+                registro : 'updateEmpleados',
+                nombre: nombre,
+                apellido1: apellidosP,
+                apellido2: apellidosM,
+                dni: dnni,
+                telefono: telefonos,
+                direccion: direccione,
+                listGenero: generos,
+                FechaN: f_nac,
+                id:id
+            }).done((resolve)=>{
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Exito al modificar el registro',
+                    
+                }).then((conf)=>{
+                location.reload();
+                })
+            })
+        }
+
+    })
+
+}).fail((ERR)=>{
+    alert(ERR);
+});
+
+
+    
+
+}
+
+    </script>
 
 </html>
 <?php

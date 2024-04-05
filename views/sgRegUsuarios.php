@@ -1,6 +1,7 @@
 <?php
 session_start();
 if($_SESSION['Oficina']['id']){
+  
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +69,8 @@ if($_SESSION['Oficina']['id']){
                         </tr>
                     </thead>
                     <tbody id="contentTable">
-                        <!-- Contenido de la tabla se agregará aquí -->
+                        
+                           
                     </tbody>
                 </table>
             </section>
