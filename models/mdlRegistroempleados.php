@@ -113,10 +113,5 @@ class MdlRegistroempleados extends connectMySQL{
 
 
     }//Llave de public function insertEmpleados
-
-
 }
-
-
-
 ?>
