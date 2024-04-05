@@ -1,6 +1,6 @@
 <?php
 
-include('../models/mdlRegistroempleados.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/models/mdlRegistroempleados.php');
 
 class CtrlEmpleados extends MdlRegistroempleados{
 
@@ -11,8 +11,11 @@ class CtrlEmpleados extends MdlRegistroempleados{
     public function getOneEmpleado($id){
         return MdlRegistroempleados::getOneEmpleado($id);
     }
-   public function insertEmpleados($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $id){
-    return MdlRegistroempleados::insertEmpleado($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $id);
+    public function getDepartamentos(){
+        return MdlRegistroempleados::getDepartamentos();
+    }
+   public function insertEmpleados($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $idPed, $id){
+    return MdlRegistroempleados::insertEmpleado($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $idPed, $id);
     
    }
    public function deleteEmpleado($id){
@@ -36,7 +39,7 @@ if(isset($_POST['registro'])){
 
     switch($registro){
         case 'insertEmpleado':
-            $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN,0);
+            $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN, $idDep,0);
                 if($request[0]){
                     $response['status'] = "success";
                     $response['msg'] = $request[1];
@@ -70,7 +73,7 @@ if(isset($_POST['registro'])){
                 $listGenero = isset($_POST['listGenero']) ? $_POST['listGenero'] : null;
                 $fechaN = isset($_POST['fechaN']) ? $_POST['fechaN'] : null;      
 
-                 $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN,$id);
+                 $request = $controller->insertEmpleados($nombre,$apellido1,$apellido2,$dni,$telefono,$direccion,$listGenero,$fechaN, $idPed, $id);
                 if($request[0]){
                     $response['status'] = "success";
                     $response['msg'] = $request[1];

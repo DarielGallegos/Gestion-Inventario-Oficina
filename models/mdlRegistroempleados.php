@@ -1,5 +1,5 @@
 <?php
-include('../repository/connectMySQL.php');
+include($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/repository/connectMySQL.php');
 
 class MdlRegistroempleados extends connectMySQL{
 
@@ -59,13 +59,28 @@ class MdlRegistroempleados extends connectMySQL{
         }
     }
 
-    public function insertEmpleado($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $id){
+    public function getDepartamentos(){
+        $sql = 'CALL departamentosGet()';
+        try{
+            $conn = connectMySQL::getInstance()->createConnection();
+            $statement = $conn->prepare($sql);
+            if($statement->execute()){
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $result = $statement->errorInfo();
+            }
+            return [true, "Exito al ejecutar peticion", $result];
+        }catch(PDOException $e){
+            return [false, "Error al ejecutar peticion", $e->getMessage()];
+        }
+    }
 
-    $sql = "CALL empleadosInsert (?,?,?,?,?,?,?,?);";     
+    public function insertEmpleado($nombres, $apellido1, $apellido2, $dni,$telefono,$direccion,$genero,$fechaN, $idDep, $id){
+
+    $sql = "CALL empleadosInsert (?,?,?,?,?,?,?,?,?);";     
 
             if($id != 0){
-                $sql = "CALL empleadosUpdate(?,?,?,?,?,?,?,?,?);";
-
+                $sql = "CALL empleadosUpdate(?,?,?,?,?,?,?,?,?,?);";
             }
             try{
             $conn = connectMySQL::getInstance()->createConnection();
@@ -78,16 +93,15 @@ class MdlRegistroempleados extends connectMySQL{
             $statement->bindParam(6, $direccion);
             $statement->bindParam(7, $genero);
             $statement->bindParam(8, $fechaN);
-            
-
+            $statement->bindParam(9, $idDep);
             if($id !=0){
-                $statement->bindParam(9,$id);
+                $statement->bindParam(10,$id);
             }
             if($statement->execute()){
                 $resul = $statement->rowCount();
 
             }else{
-                $resul = $statement->errorInfo;
+                $resul = $statement->errorInfo();
             }
 
             return [true, "Exito al procesar consulta",$resul];

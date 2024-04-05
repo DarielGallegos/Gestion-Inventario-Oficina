@@ -5,7 +5,8 @@ if($_SESSION['Oficina']['id']){
     $controller = new CtrlEmpleados();
     $empleados = $controller->getEmpleados();
     $empleados = $empleados[2];
-
+    $departamentos = $controller->getDepartamentos();
+    $departamentos = $departamentos[2];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +65,16 @@ if($_SESSION['Oficina']['id']){
                         <option value="F">Femenino</option>    
                     </select>
 
+                    <label for="list-departamentos" class="form-label">Departamentos: </label>
+                    <select name="listDepartamentos" id="listDepartamentos" class="form-control">
+                        <option value="0">SELECCIONE</option>
+                        <?php
+                            for($i=0; $i<count($departamentos); $i++){
+                        ?>
+                            <option value="<?= $departamentos[$i]['ID']?>"><?= $departamentos[$i]['nombre']?></option>    
+                        <?php }?>
+                    </select>
+
                     <br>
                     <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
                     <input type="date" class="form-control" id="inpfechaN" name="fechaN">
@@ -97,6 +108,7 @@ if($_SESSION['Oficina']['id']){
                             <th>Nombres</th>
                             <th>Apellido Paterno</th>
                             <th>Apellido Materno</th>
+                            <th>Departamento</th>
                             <th>DNI</th>
                             <th>Telefono</th>
                             <th>Direccion</th>
@@ -113,12 +125,12 @@ if($_SESSION['Oficina']['id']){
                                 <td><?= $empleados[$i]['nombres'] ?></td>
                                 <td><?= $empleados[$i]['apellido-paterno'] ?></td>
                                 <td><?= $empleados[$i]['apellido-materno'] ?></td>
+                                <td><?= $empleados[$i]['Departamento']?></td>
                                 <td><?= $empleados[$i]['n-identidad'] ?></td>
                                 <td><?= $empleados[$i]['n-telefono'] ?></td>
                                 <td><?= $empleados[$i]['direccion'] ?></td>
                                 <td><?= $empleados[$i]['genero'] ?></td>
                                 <td><?= $empleados[$i]['fecha-nacimiento'] ?></td>
-                             <!--   <td><?= $empleados[$i]['Departamento'] ?></td>nueva-->
                                 <td>
                                     <button class="btn btn-warning" onclick="editEmpleado(<?= $empleados[$i]['ID'] ?>)">
                                         <i class="nf nf-md-pencil_outline"></i>
