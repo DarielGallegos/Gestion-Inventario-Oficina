@@ -20,39 +20,22 @@ if($_SESSION['Oficina']['id']){
     <?php include('.././components/nav-bar.php'); ?>
 
     <section class="mt-container container-fluid">
-
+    <h2 class="text-center">BANDEJA PETICIONES</h2>
         <div class="card_container">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <button class="btn btn-outline-secondary"><i class="fa fa-filter" aria-hidden="true"></i></button>
-
+                <input oninput="funGetBandejaPeticionesBusca(event)" type="text" class="form-control" placeholder="🔍 Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
             </div>
 
-            <h5>Peticiones Pendientes: 2</h5>
-            <div class="tbl_wrapper">
-                <div class="card text-bg-success mb-3" style="max-width: 38rem;">
-                    <div class="card-header"><span class="float-start">Petición # 1</span><button class="float-end" onclick="ventanaFormaPeticion(event)"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-text">Departamento: </h6>
-                        <h6 class="card-text">Fecha:</h6>
-                        <h6 class="card-text">Productos Totales:</h6>
-                        <h6 class="card-text">Empleado ID: </h6>
-                    </div>
-                </div>
+            <h5>Peticiones Pendientes: <span id="cant_pedidos"></span></h5>
+            <div id="cards_container" class="tbl_wrapper">
 
-                <div class="card text-bg-primary mb-3" style="max-width: 38rem;">
-                    <div class="card-header"><span class="float-start">Petición # 2</span><button class="float-end" onclick="ventanaFormaPeticion(event)"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-text">Departamento: </h6>
-                        <h6 class="card-text">Fecha: </h6>
-                        <h6 class="card-text">Productos Totales:</h6>
-                        <h6 class="card-text">Empleado ID: </h6>
-                    </div>
-                </div>
+
+                
             </div>
+            <div id='div_msg_vacio' class='position-relative oculto'>
+                    <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                    <p class='text-center'>No hay elementos.</p>
+                </div>
         </div>
 
 
@@ -63,42 +46,23 @@ if($_SESSION['Oficina']['id']){
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID Producto</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Categoria</th>
+                        <th scope="col">ID Insumos</th>
+                        <th scope="col">Insumos</th>
+                        <!-- <th scope="col">Categoria</th> -->
                         <th scope="col">Cantidad</th>
                     </tr>
                 </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Rema de Papel</td>
-                        <td>Papelería</td>
-                        <td>4</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Marcadores</td>
-                        <td>Lapicería</td>
-                        <td>6</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Grapadora</td>
-                        <td>Oficina</td>
-                        <td>1</td>
-                    </tr>
-
+                <tbody id="tbody_pedidos_detalle" class="table-group-divider">
+                   
                 </tbody>
             </table>
-            <form class="float-end">
-                <input class="oculto" type="text" value="2">
+            
+            <div class="float-end">
+                <input id="in_det_ped_id" class="oculto" type="text">
                 <button class="btn btn-secondary" onclick="cerrarVentanaPeticion(event)">Cancelar</button>
-                <button class="btn btn-danger">Rechazar</button>
-                <button class="btn btn-primary">Aceptar</button>
-            </form>
+                <button class="btn btn-danger" onclick="funActualizarPedido(2)" >Rechazar</button>
+                <button class="btn btn-primary" onclick="funActualizarPedido(1)">Aceptar</button>
+            </div>
         </div>
     </section>
 </body>

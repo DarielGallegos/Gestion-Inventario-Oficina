@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['Oficina']['id']) {
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="es">
 
@@ -14,12 +14,13 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/globalStyle.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
         <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     </head>
 
     <body>
-        <?php include('.././components/nav-bar.php');
-        include(".././controllers/ctrlEntrega.php");
+        <?php include ('.././components/nav-bar.php');
+        include (".././controllers/ctrlEntrega.php");
         $controller = new ctrlEntrega();
         $data = $controller->getAllInsumos();
         $data = $data[2];
@@ -27,6 +28,7 @@ if ($_SESSION['Oficina']['id']) {
         $departamentos = $departamentos[2];
         $pedido = $controller->getPedidos(1);
         $pedido = $pedido[2];
+        $arreglo = [];
         ?>
         <section class="mt-container container-fluid">
             <h2 class="text-center">Formulario de Entrega</h2>
@@ -36,16 +38,20 @@ if ($_SESSION['Oficina']['id']) {
                 <section class=" col col-6 col-md-4">
                     <form>
                         <h2 class="text-center">Formulario de Entrega</h2>
-                        <label for="NomEmpleado" class="form-label">Empleado Envia: <?= $_SESSION['Oficina']['nombre'] ?></label>
+                        <label for="NomEmpleado" class="form-label">Empleado Envia:
+                            <?= $_SESSION['Oficina']['nombre'] ?>
+                        </label>
                         <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id'] ?>'>
                         <label for="" class="form-label">Seleccione el Departamento Destino: </label>
                         <select name="" id="cboDepartamento" class="form-control">
                             <option value="0">------------- Seleccione ------------- ↓</option>
                             <?php
                             for ($i = 0; $i < count($departamentos); $i++) {
-                            ?>
-                                <option value="<?= $departamentos[$i]['ID'] ?>"><?= $departamentos[$i]['nombre'] ?></option>
-                            <?php }  ?>
+                                ?>
+                                <option value="<?= $departamentos[$i]['ID'] ?>">
+                                    <?= $departamentos[$i]['nombre'] ?>
+                                </option>
+                            <?php } ?>
                         </select>
                         <label for="">Fecha de Registro</label>
                         <input type="date" class="form-control" id="dateEntrega" readonly>
@@ -54,8 +60,10 @@ if ($_SESSION['Oficina']['id']) {
                             <option value="0">------------- Seleccione ------------- ↓</option>
                             <?php
                             for ($i = 0; $i < count($pedido); $i++) {
-                            ?>
-                                <option value="<?= $pedido[$i]['ID'] . '-' . $pedido[$i]['ID_DEPARTAMENTO'] ?>"><?= "N.Pedido " . $pedido[$i]['ID'] . " - " . $pedido[$i]['Empleado'] ?></option>
+                                ?>
+                                <option value="<?= $pedido[$i]['ID'] . '-' . $pedido[$i]['ID_DEPARTAMENTO'] ?>">
+                                    <?= "N.Pedido " . $pedido[$i]['ID'] . " - " . $pedido[$i]['Empleado'] ?>
+                                </option>
                             <?php } ?>
                         </select>
                         <br>
@@ -64,9 +72,12 @@ if ($_SESSION['Oficina']['id']) {
                         <br>
                     </form>
                     <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                        <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar<i class="nf nf-cod-add"></i></button>
-                        <button type="button" class="btn btn-outline-primary" id="btnEnviar">Enviar<i class="nf nf-fa-send"></i></button>
-                        <button type="button" class="btn btn-outline-primary" id="btnFlush">Flush<i class="nf nf-cod-trash"></i></button>
+                        <button type="button" class="btn btn-outline-primary" id="btnAgregar">Agregar<i
+                                class="nf nf-cod-add"></i></button>
+                        <button type="button" class="btn btn-outline-primary" id="btnEnviar">Enviar<i
+                                class="nf nf-fa-send"></i></button>
+                        <button type="button" class="btn btn-outline-primary" id="btnFlush">Flush<i
+                                class="nf nf-cod-trash"></i></button>
                     </section>
                 </section>
                 <!-- Fin Estructura de Formulario Registro -->
@@ -85,6 +96,15 @@ if ($_SESSION['Oficina']['id']) {
                         <tbody id="contentTableDetalle">
                         </tbody>
                     </table>
+                    <?php
+                    if (count($arreglo) == 0) {
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                    ?>
                 </section>
                 <!-- Fin Estructura de Tabla -->
             </section>
@@ -97,28 +117,35 @@ if ($_SESSION['Oficina']['id']) {
     <script src=".././js/trEntrega.js"></script>
     <script>
         document.getElementById("btnAgregar").addEventListener("click", () => {
+
+            let div_msg_vacio = document.getElementById('div_msg_vacio');
+            if (div_msg_vacio) {
+                div_msg_vacio.classList.add('oculto');
+            }
+
             var row = document.createElement('tr');
+            row.setAttribute('class','dynamic_row')
             row.innerHTML = `
-    <td>        
-        <select class="form-control" name="" id="cboInsumo">
-            <option value="">Seleccione</option>
-        <?php
-        if (count($data) > 0) {
-            for ($i = 0; $i < count($data); $i++) { ?>
-            <option value=<?= $data[$i]['Serial Insumo'] ?> ><?= $data[$i]['Insumo'] . " N°. " . $data[$i]['Serial Insumo'] . '-' . $data[$i]['INSUMO CATALOGO'] ?></option>
-        <?php }
-        }
-        ?>
-        </select>
-    </td>
-    <td>
-        <input type="number" class="form-control" name="" id="stock">
-    </td>
-    <td>
-        <button class="btn btn-danger" onclick="deleteInsumo(this)">
-            <i class="nf nf-fa-trash_o"></i>
-        </button>
-    </td>`;
+                <td>        
+                    <select class="form-control" name="" id="cboInsumo">
+                        <option value="">Seleccione</option>
+                    <?php
+                    if (count($data) > 0) {
+                        for ($i = 0; $i < count($data); $i++) { ?>
+                                <option value=<?= $data[$i]['Serial Insumo'] ?> ><?= $data[$i]['Insumo'] . " N°. " . $data[$i]['Serial Insumo'] . '-' . $data[$i]['INSUMO CATALOGO'] ?></option>
+                        <?php }
+                    }
+                    ?>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" class="form-control" name="" id="stock">
+                </td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteInsumo(this)">
+                        <i class="nf nf-fa-trash_o"></i>
+                    </button>
+                </td>`;
             document.getElementById("contentTableDetalle").prepend(row);
             row.querySelector("#cboInsumo").addEventListener("change", () => {
                 if (row.querySelector("#cboInsumo").value != "") {
@@ -151,23 +178,23 @@ if ($_SESSION['Oficina']['id']) {
                         for (x = 0; x < response.data.length; x++) {
                             var row = document.createElement('tr');
                             row.innerHTML = `
-                <td>        
-                    <select class="form-control" name="" id="cboInsumo">
-                        <option value="` + response.data[x]['ID_INSUMO'] + `">` + response.data[x]['ID_INSUMO'] + " " + response.data[x]['nombre'] + `</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="number" class="form-control" name="" id="stock" value="` + response.data[x]['cantidad'] + `">
-                </td>
-                <td>
-                    <button class="btn btn-danger" onclick="deleteInsumo(this)">
-                        <i class="nf nf-fa-trash_o"></i>
-                    </button>
-                </td>`;
+                    <td>        
+                        <select class="form-control" name="" id="cboInsumo">
+                            <option value="` + response.data[x]['ID_INSUMO'] + `">` + response.data[x]['ID_INSUMO'] + " " + response.data[x]['nombre'] + `</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="" id="stock" value="` + response.data[x]['cantidad'] + `">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteInsumo(this)">
+                            <i class="nf nf-fa-trash_o"></i>
+                        </button>
+                    </td>`;
                             document.getElementById("contentTableDetalle").append(row);
                         }
 
-                    }else{
+                    } else {
                         document.getElementById("contentTableDetalle").append("Este pedido no tiene detalle");
                     }
                 });
@@ -178,7 +205,7 @@ if ($_SESSION['Oficina']['id']) {
     </script>
 
     </html>
-<?php
+    <?php
 } else {
     header('location: ../index.php');
 }

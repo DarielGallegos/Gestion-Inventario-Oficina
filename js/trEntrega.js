@@ -6,6 +6,7 @@ window.onload = () => {
     document.getElementById("dateEntrega").value = today.getFullYear() +'-'+('0'+(today.getMonth()+1))+'-'+ ('0'+today.getDate());
     }
 }
+
 document.getElementById("btnEnviar").addEventListener('click', () => {
     const Toast = Swal.mixin({
         toast: true,
@@ -112,6 +113,7 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
             showCancelButton: true
         }).then((result) => {
             if (result.isConfirmed) {
+                
                 $.post('.././controllers/ctrlEntrega.php', {
                     request: "insertEntrega",
                     cabecera:cabecera,
@@ -136,9 +138,19 @@ document.getElementById("btnEnviar").addEventListener('click', () => {
         });
     }
 });
+
 function deleteInsumo(button) {
     var row = button.closest("tr");
     row.parentNode.removeChild(row);
+    
+    let numrows = document.querySelectorAll('.dynamic_row');
+
+    if(numrows.length <= 0) {
+        let div_msg_vacio = document.getElementById('div_msg_vacio');
+        if(div_msg_vacio) {
+            div_msg_vacio.classList.remove('oculto');
+        }
+    }
 }
 
 document.getElementById("btnFlush").addEventListener("click", () => {
@@ -149,5 +161,10 @@ function flushData(){
     var list = document.getElementById("contentTableDetalle");
     while(list.firstChild){
         list.removeChild(list.firstChild);
+    }
+
+    let div_msg_vacio = document.getElementById('div_msg_vacio');
+    if(div_msg_vacio) {
+        div_msg_vacio.classList.remove('oculto');
     }
 }

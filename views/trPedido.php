@@ -23,7 +23,9 @@ if ($_SESSION['Oficina']['id']) {
     </head>
 
     <body>
-        <?php include('.././components/nav-bar.php'); ?>
+        <?php include('.././components/nav-bar.php'); 
+        $arreglo = [];
+        ?>
 
         <section class="mt-container container-fluid">
             <h2 class="text-center">PETICIONES</h2>
@@ -66,6 +68,15 @@ if ($_SESSION['Oficina']['id']) {
                         <tbody id="contentTable">
                         </tbody>
                     </table>
+                    <?php 
+                    if(count($arreglo) == 0){
+                        echo "<div id='div_msg_vacio' class='position-relative'>
+                        
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }
+                ?>
                 </section>
                 <!-- Fin Estructura de Tabla -->
             </section>
@@ -78,7 +89,14 @@ if ($_SESSION['Oficina']['id']) {
     <script src=".././js/trPedido.js"></script>
     <script>
         document.getElementById("btnAgregar").addEventListener("click", () => {
+           
+            let div_msg_vacio = document.getElementById('div_msg_vacio');
+            if (div_msg_vacio) {
+                div_msg_vacio.classList.add('oculto');
+            }
+
             var row = document.createElement('tr');
+            row.setAttribute('class','dynamic_row');
             row.innerHTML = `
         <td>        
             <select class="form-control" name="" id="cboInsumo">
@@ -115,7 +133,10 @@ if ($_SESSION['Oficina']['id']) {
                     row.querySelector('#stock').value = 0;
                 }
             });
-        });
+
+            
+        }
+        );
     </script>
 
     </html>
