@@ -22,7 +22,7 @@ if ($_SESSION['Oficina']['id']) {
             <h2 class="text-center">BANDEJA PETICIONES</h2>
             <div class="card_container">
                 <div class="input-group mb-3">
-                    <input  type="text" class="form-control" placeholder="🔍 Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input oninput="funGetBandejaPeticionesBusca(event)" type="text" class="form-control" placeholder="🔍 Buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
                 </div>
 
                 <h5>Peticiones Pendientes: <span id="cant_pedidos"></span></h5>
