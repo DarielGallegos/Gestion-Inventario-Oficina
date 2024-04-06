@@ -28,7 +28,6 @@ if ($_SESSION['Oficina']['id']) {
         $departamentos = $departamentos[2];
         $pedido = $controller->getPedidos(2);
         $pedido = $pedido[2];
-        $arreglo = [];
         ?>
         <section class="mt-container container-fluid">
             <h2 class="text-center">Formulario de Entrega</h2>
@@ -96,15 +95,11 @@ if ($_SESSION['Oficina']['id']) {
                         <tbody id="contentTableDetalle">
                         </tbody>
                     </table>
-                    <?php
-                    if (count($arreglo) == 0) {
-                        echo "<div id='div_msg_vacio' class='position-relative'>
-                        
+                        <div id='div_msg_vacio' class='position-relative'>
                             <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
                             <p class='text-center'>No hay elementos.</p>
-                            </div>";
-                    }
-                    ?>
+                            </div>
+                    
                 </section>
                 <!-- Fin Estructura de Tabla -->
             </section>
@@ -124,28 +119,28 @@ if ($_SESSION['Oficina']['id']) {
             }
 
             var row = document.createElement('tr');
-            row.setAttribute('class','dynamic_row')
+            row.setAttribute('class', 'dynamic_row')
             row.innerHTML = `
-                <td>        
-                    <select class="form-control" name="" id="cboInsumo">
-                        <option value="">Seleccione</option>
-                    <?php
-                    if (count($data) > 0) {
-                        for ($i = 0; $i < count($data); $i++) { ?>
-                                <option value=<?= $data[$i]['Serial Insumo'] ?> ><?= $data[$i]['Insumo'] . " N°. " . $data[$i]['Serial Insumo'] . '-' . $data[$i]['INSUMO CATALOGO'] ?></option>
-                        <?php }
-                    }
-                    ?>
-                    </select>
-                </td>
-                <td>
-                    <input type="number" class="form-control" name="" id="stock">
-                </td>
-                <td>
-                    <button class="btn btn-danger" onclick="deleteInsumo(this)">
-                        <i class="nf nf-fa-trash_o"></i>
-                    </button>
-                </td>`;
+                        <td>        
+                            <select class="form-control" name="" id="cboInsumo">
+                                <option value="">Seleccione</option>
+                            <?php
+                            if (count($data) > 0) {
+                                for ($i = 0; $i < count($data); $i++) { ?>
+                                                        <option value=<?= $data[$i]['Serial Insumo'] ?> ><?= $data[$i]['Insumo'] . " N°. " . $data[$i]['Serial Insumo'] . '-' . $data[$i]['INSUMO CATALOGO'] ?></option>
+                                        <?php }
+                            }
+                            ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" name="" id="stock">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteInsumo(this)">
+                                <i class="nf nf-fa-trash_o"></i>
+                            </button>
+                        </td>`;
             document.getElementById("contentTableDetalle").prepend(row);
             row.querySelector("#cboInsumo").addEventListener("change", () => {
                 if (row.querySelector("#cboInsumo").value != "") {
@@ -162,6 +157,9 @@ if ($_SESSION['Oficina']['id']) {
                 }
             });
         });
+
+
+
         document.getElementById("cboPedido").addEventListener("change", () => {
             var id = document.getElementById("cboPedido").value;
             flushData();
@@ -174,29 +172,43 @@ if ($_SESSION['Oficina']['id']) {
                     request: 'detallePedido',
                     id: idP
                 }).done((response) => {
-                    if (response.data.length > 0) {
-                        for (x = 0; x < response.data.length; x++) {
-                            var row = document.createElement('tr');
-                            row.innerHTML = `
-                    <td>        
-                        <select class="form-control" name="" id="cboInsumo">
-                            <option value="` + response.data[x]['ID_INSUMO'] + `">` + response.data[x]['ID_INSUMO'] + " " + response.data[x]['nombre'] + `</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="number" class="form-control" name="" id="stock" value="` + response.data[x]['cantidad'] + `">
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" onclick="deleteInsumo(this)">
-                            <i class="nf nf-fa-trash_o"></i>
-                        </button>
-                    </td>`;
-                            document.getElementById("contentTableDetalle").append(row);
-                        }
 
-                    } else {
-                        document.getElementById("contentTableDetalle").append("Este pedido no tiene detalle");
+                    let div_msg_vacio = document.getElementById('div_msg_vacio');
+
+                    if (response.data.length <= 0) {
+                        if (div_msg_vacio) {
+                            div_msg_vacio.classList.remove('oculto');
+                        }
+                        return;
                     }
+
+                    if (div_msg_vacio) {
+                        div_msg_vacio.classList.add('oculto');
+                    }
+
+
+
+                    for (x = 0; x < response.data.length; x++) {
+                        var row = document.createElement('tr');
+                        row.innerHTML = `
+                                    <td>        
+                                        <select class="form-control" name="" id="cboInsumo">
+                                            <option value="` + response.data[x]['ID_INSUMO'] + `">` + response.data[x]['ID_INSUMO'] + " " + response.data[x]['nombre'] + `</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="" id="stock" value="` + response.data[x]['cantidad'] + `">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="deleteInsumo(this)">
+                                            <i class="nf nf-fa-trash_o"></i>
+                                        </button>
+                                    </td>`;
+
+                        document.getElementById("contentTableDetalle").append(row);
+                    }
+
+
                 });
             } else {
                 document.getElementById("cboDepartamento").value = "0";
