@@ -32,6 +32,7 @@ if($_SESSION['Oficina']['id']){
             <section class="col col-6 col-md-4">
                 <form>
                     <h2 class="text-center">Formulario de Usuarios</h2>
+                   
 
                     <label for="inpuser" class="form-label">Ingrese un usuario: </label>
                     <input type="text" class="form-control" id="inpuser" name="inpuser">
@@ -62,7 +63,7 @@ if($_SESSION['Oficina']['id']){
                 <table class="table table-hover" id="tabla">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Identidad</th>
                             <th>Nombre</th>
                             <th>Usuario</th>
                             <th>Departamento</th>
