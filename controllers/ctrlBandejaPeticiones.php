@@ -1,7 +1,7 @@
 <?php 
     include(".././models/mdlBandejaPeticiones.php");
-    $body = file_get_contents('php://input');
-    $decoded_body = json_decode($body);
+    /* $body = file_get_contents('php://input');
+    $decoded_body = json_decode($body); */
     class CtrlBandejaPeticiones extends mdlBandejaPeticiones{
         public function getBandejaPedidos($tipoConsulta){
             return mdlBandejaPeticiones::getBandejaPedidos($tipoConsulta);

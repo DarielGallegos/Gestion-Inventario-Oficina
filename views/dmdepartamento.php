@@ -64,6 +64,12 @@ if($_SESSION['Oficina']['id']){
                         <?php } ?>
                     </tbody>
                 </table>
+                <?php if(count($departamentos) == 0) {
+                    echo "<div id='div_msg_vacio' class='position-relative'>
+                            <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
+                            <p class='text-center'>No hay elementos.</p>
+                            </div>";
+                    }?>
             </section>
             <!-- Fin Estructura de Tabla -->
         </section>
