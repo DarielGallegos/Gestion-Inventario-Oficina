@@ -1,4 +1,3 @@
-
 .contenedor-cuadrado {
     width: 200px;
     height: 100px;
@@ -126,4 +125,85 @@
     text-align: center;
     background-color: #6D6D6D;
     color: white;
+}
+
+
+.botonver {
+
+    background-color: white;
+    color: #6D6D6D;
+    border-color: #83BDF4;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: justify;
+
+}
+
+.botonver:hover {
+    background-color: #83BDF4;
+}
+
+/* #tablaE {
+    font-family: arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    display: none;
+    left: 700px;
+}
+
+#tabla {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 45%;
+}
+
+#tabla td,
+#tabla th {
+    border: 1px solid #CCC7C5;
+    padding: 8px;
+}
+
+#tabla tr:nth-child(even) {
+    background-color: #CCC7C5;
+}
+
+#tabla tr:hover {
+    background-color: #CCC7C5;
+}
+
+#tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #6D6D6D;
+    color: white;
+} */
+
+#div-card {
+    width: 400px;
+    background-color: rgba(128, 128, 128, 0.181);
+    padding: 45px;
+    margin: 15px 10px 25px 50px;
+}
+
+#div-pedidos {
+    width: 400px;
+    background-color: rgba(128, 128, 128, 0.181);
+    padding: 30px;
+    margin: 0 45px 45px 50px;
+
+}
+
+#tabla {
+    display: none;
+}
+
+.grafico-container {
+    margin-left: 150px;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
