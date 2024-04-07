@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['Oficina']['id'])) {
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="es">
 
@@ -18,7 +18,7 @@ if (isset($_SESSION['Oficina']['id'])) {
     </head>
 
     <body>
-        <?php include ('.././components/nav-bar.php'); ?>
+        <?php include('.././components/nav-bar.php'); ?>
         <section class="mt-container container-fluid">
             <section class="container-fluid row gx-5 px-4">
                 <section class="row">
@@ -27,25 +27,25 @@ if (isset($_SESSION['Oficina']['id'])) {
                     </section>
                 </section>
 
-                        <section class="container row">
-                        <div class="dashboard">
-        <div class="grafico" id="grafico1">
-                                <section class="col-6" style="width: 400px; height: 400x;" id="InsumoConMSalidas">
-                                    <canvas id="chart"></canvas>
-                                </section>
-</div>
+                <section class="container row">
+                    <div class="dashboard">
+                        <div class="grafico" id="grafico1">
+                            <section class="col-6" style="width: 400px; height: 400x;" id="InsumoConMSalidas">
+                                <canvas id="chart"></canvas>
+                            </section>
+                        </div>
 
-        <div class="grafico" id="grafico2">
-                                <section class="col-6" style="width: 500px; height: 400px;" id="InsumoMasSolicitado">
-                                    <canvas id="chartBar"></canvas>
-                                </section>
-</div>
-        <div class="grafico" id="grafico3">                      
-                                <section class="col-12" style="width: 400px; height: 400px;" id="TotaldePedidosPorDepa">
-                                    <canvas id="chartPolar"></canvas>
-                                </section>
-</div>
-                                                    </section>
+                        <div class="grafico" id="grafico2">
+                            <section class="col-6" style="width: 500px; height: 400px;" id="InsumoMasSolicitado">
+                                <canvas id="chartBar"></canvas>
+                            </section>
+                        </div>
+                        <div class="grafico" id="grafico3">
+                            <section class="col-12" style="width: 400px; height: 400px;" id="TotaldePedidosPorDepa">
+                                <canvas id="chartPolar"></canvas>
+                            </section>
+                        </div>
+                </section>
             </section>
         </section>
     </body>
@@ -56,7 +56,7 @@ if (isset($_SESSION['Oficina']['id'])) {
     <script src=".././js/main.js"></script>
 
     </html>
-    <?php
+<?php
 } else {
     header('location: ../index.php');
 }

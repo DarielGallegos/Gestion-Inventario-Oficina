@@ -1,7 +1,13 @@
 <?php
-include ('--/models/mdlUsuarios.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/models/mdlUsuarios.php');
 
 class CtrlUsuarios extends MdlUsuarios{
+    public function getEmpleadoSinUsuario(){
+        return MdlUsuarios::getEmpleadoSinUsuario();
+    }
+    public function getUsuarios(){
+        return MdlUsuarios::getUsuarios();
+    }
     public function insertUsuarios($alias, $password, $id)
     {
         return MdlUsuarios :: insertUsuarios($alias, $password, $id);
@@ -12,9 +18,9 @@ class CtrlUsuarios extends MdlUsuarios{
 if(isset($_POST['peticion'])){
     header("content-Type: application/json; charset=uth-8");
     $response = array(
-        'status'-> 'error',
-        'msg'-> 'Error al procesar consulta'
-        'data'-> null
+        'status'=> 'error',
+        'msg'=> 'Error al procesar consulta',
+        'data'=> null
     );
 
 
