@@ -41,9 +41,9 @@
             </head>
                 <body class="libre-baskerville-regular">
                     <div style="background-color: #f2f2f2;">
-                        <img src="localhost/Gestion-Inventario-Oficina/img/UTH2.png" width="10%" >
+                        <img src="/img/UTH2.png" width="10%" >
                         <div style="float: right; padding: 8px;" >
-                            <h4>Fecha de creacion: '.$this->date.'</h4>
+                            <h4>Fecha de creación: '.$this->date.'</h4>
                             <h4> Creado por: '. $this->owner.'</h4>
                         </div>
                     </div>';

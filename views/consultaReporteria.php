@@ -101,32 +101,11 @@ if ($_SESSION['Oficina']['id']) {
 
                 <!-- Contenedor de gráfico y tabla -->
                 <section class="row row-cols-1 row-cols-md-1 g-5 col">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <?php 
-                                        for($x = 0; $x<count($empleados[0]); $x++){
-                                            echo '<th>'.strtoupper(key($empleados[0])).'</th>';
-                                            next($empleados[0]);
-                                    }?>
-                                </tr>
-                            </thead>
-                            <tbody id="contentTable">
-                                <?php for($i=0; $i<count($empleados); $i++){?>
-                                    <tr>
-                                        <td><?= $empleados[$i]['ID']?></td>
-                                        <td><?= $empleados[$i]['Nombres']?></td>
-                                        <td><?= $empleados[$i]['Apellido Paterno']?></td>
-                                        <td><?= $empleados[$i]['Apellido Materno']?></td>
-                                        <td><?= $empleados[$i]['Departamento']?></td>
-                                        <td><?= $empleados[$i]['N. Identidad']?></td>
-                                        <td><?= $empleados[$i]['N. Telefono']?></td>
-                                        <td><?= $empleados[$i]['Genero']?></td>
-                                        <td><?= $empleados[$i]['Fecha Nacimiento']?></td>
-                                    </tr>
-                                <?php }?>
-                            </tbody>
-                        </table>
+                    <div>
+                        <div id="path_link_container" style="padding: 16px;"></div>
+                        <tabla id="tabla_target" class="table table-striped table-hover"></tabla>
+                    </div>  
+                    
 
                     <div class="grafico-container">
                         <div id="contenedorGrafico">
