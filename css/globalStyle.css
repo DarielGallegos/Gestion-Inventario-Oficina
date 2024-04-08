@@ -11,7 +11,7 @@ body{
 }
 
 .nuevaTabla {
-    background-color: #E1E1E1;
+    background-color: #e1e1e1;
     padding: 20px;
     border-radius: 20px;
 
@@ -91,7 +91,7 @@ form label {
 
 #tabla td,
 #tabla th {
-    border: 1px solid #CCC7C5;
+    border: 1px solid #c5ccc6;
     padding: 8px;
 }
 
@@ -100,13 +100,18 @@ form label {
 }
 
 #tabla tr:hover {
-    background-color: #CCC7C5;
+    background-color: #c5c7cc;
 }
 
 #tabla th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #6D6D6D;
-    color: white;
+    background-color: #6d6d6d;
+    color: rgb(255, 255, 255);
+}
+
+ 
+.bg-green {
+    background-color: green;
 }

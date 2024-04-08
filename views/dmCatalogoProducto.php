@@ -20,6 +20,8 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/globalStyle.css">
         <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
+        <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
+
     </head>
 
     <body>
@@ -48,7 +50,7 @@ if ($_SESSION['Oficina']['id']) {
                 </section>
                 <section class="col col-8">
                     <label for="search">Buscar Producto:</label>
-                    <input type="text" id="search" onkeyup="searchTable()" placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria" style="width: 50%; padding: 8px;">
+                    <input type="text" id="search" onkeyup="searchTable()" placeholder="🔍Buscar por: ID, Nombre, Descripcion, Categoria" style="width: 50%; padding: 8px;">
                     <br>
                     <table class="table table-hover" id="tabla">
                         <thead>
@@ -80,12 +82,12 @@ if ($_SESSION['Oficina']['id']) {
                             <?php } ?>
                         </tbody>
                     </table>
-                    <?php if(count($insumos) == 0) {
-                    echo "<div id='div_msg_vacio' class='position-relative'>
+                    <?php if (count($insumos) == 0) {
+                        echo "<div id='div_msg_vacio' class='position-relative'>
                             <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
                             <p class='text-center'>No hay elementos.</p>
                             </div>";
-                    }?>
+                    } ?>
                 </section>
             </section>
 
@@ -167,29 +169,37 @@ if ($_SESSION['Oficina']['id']) {
                     }
                 }).then((res) => {
                     if (res.isConfirmed) {
-                        var nombre = document.getElementById('nombre').value;
-                        var descripcion = document.getElementById('descripcion').value;
-                        var idCat = document.getElementById('categoria').value;
+                        var nombre = $('#nombre').val().trim();
+                        var descripcion = $('#descripcion').val().trim();
+                        var idCat = $('#categoria').val();
                         idCat = parseInt(idCat);
-                        $.post('.././controllers/CtrlCatalogoInsumos.php', {
-                            peticion: 'updateInsumo',
-                            insumo: nombre,
-                            descripcionInsumo: descripcion,
-                            idCategoria: idCat,
-                            id: id
-                        }).done((resolve) => {
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Exito al Modificar el Registro'
-                            }).then((conf) => {
-                                location.reload();
+                        if (nombre != "" && descripcion != "" && idCat != 0) {
+                            $.post('.././controllers/CtrlCatalogoInsumos.php', {
+                                peticion: 'updateInsumo',
+                                insumo: nombre,
+                                descripcionInsumo: descripcion,
+                                idCategoria: idCat,
+                                id: id
+                            }).done((resolve) => {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Exito al Modificar el Registro'
+                                }).then((conf) => {
+                                    location.reload();
+                                })
                             })
-                        })
+                        }else{
+                            Toast.fire({
+                                icon: 'warning',
+                                text: 'No puede mandar campos vacios'
+                            })
+                        }
                     }
                 })
             });
         }
     </script>
+
     </html>
 <?php
 } else {

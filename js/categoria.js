@@ -1,7 +1,7 @@
 //============= INICIO FUNCION POST ==========//
 $('#form-categoria').on('submit', function (e) {
     e.preventDefault();
-    if($('#NoCategoria').val() != "" && $('#DeCategoria').val() != ""){
+    if($('#NoCategoria').val().trim() != "" && $('#DeCategoria').val().trim() != ""){
         $.ajax({
             url: '.././controllers/ctrlCategoria.php',
             method: 'POST',
@@ -42,6 +42,17 @@ $('#form-categoria').on('submit', function (e) {
 
 //============= INICIO FUNCION UPDATE ==========//
 function editCategoria(id) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
     $.post('.././controllers/ctrlCategoria.php', {
         insert: "getRegister",
         id: id
@@ -60,30 +71,39 @@ function editCategoria(id) {
             showCancelButton: true
         }).then((result) => {
             if (result.isConfirmed) {
-                var nombre = document.getElementById("nombre").value;
-                var descripcion = document.getElementById("descripcion").value;
-                $.post('.././controllers/ctrlCategoria.php', {
-                    insert: "editCategoria",
-                    nombre: nombre,
-                    descripcion: descripcion,
-                    id: id
-                }).done((response) => {
-                    if (response.status === 'success') {
-                        Swal.fire({
-                            text: 'Registro Modificado',
-                            icon: 'success',
-                            title: 'Exito',
-                        });
-                        location.reload();
-                    } else {
-                        Swal.fire({
-                            text: 'Error al Intentar Modificar Registro',
-                            icon: 'error',
-                            title: 'Error',
-                        });
-                    }
-                })
+                if($('#nombre').val().trim() != "" && $('#descripcion').val().trim() != ""){
+                    var nombre = document.getElementById("nombre").value;
+                    var descripcion = document.getElementById("descripcion").value;
+                    $.post('.././controllers/ctrlCategoria.php', {
+                        insert: "editCategoria",
+                        nombre: nombre,
+                        descripcion: descripcion,
+                        id: id
+                    }).done((response) => {
+                        if (response.status === 'success') {
+                            Toast.fire({
+                                text: 'Registro Modificado',
+                                icon: 'success',
+                            });
+                            location.reload();
+                        } else {
+                            Toast.fire({
+                                text: 'Error al Intentar Modificar Registro',
+                                icon: 'error',
+                            });
+                        }
+                    })
+                }else{
+                    Toast.fire({
+                        icon: 'warning',
+                        text: 'No puede enviar campos vacios'
+                    })   
+                }
             } else {
+                Toast.fire({
+                    icon: 'info',
+                    text: 'Se cancelo operacion'
+                })
             }
         });
     });

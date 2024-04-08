@@ -41,6 +41,9 @@ if ($_SESSION['Oficina']['id']) {
                     </form>
                 </section>
                 <section class="col col-8">
+                <label for="search">Buscar Producto:</label>
+                    <input type="text" id="search" onkeyup="searchTable()" placeholder="🔍Buscar por: ID, Nombre, Categoria" style="width: 50%; padding: 8px;">
+                    <br>
                     <table class="table table-hover" id="tabla">
                         <thead>
                             <tr>
@@ -60,6 +63,9 @@ if ($_SESSION['Oficina']['id']) {
                                         <button class="btn btn-warning" onclick="editInsumo(<?= $insumosArmados[$i]['ID'] ?>)">
                                             <i class="nf nf-md-pencil_outline"></i>
                                         </button>
+                                        <button class="btn btn-danger" onclick="deleteInsumo(<?= $insumosArmados[$i]['ID'] ?>)">
+                                            <i class="nf nf-fa-trash_o"></i>
+                                        </button>
                                     </td>
                                 <?php } ?>
                         </tbody>
@@ -73,6 +79,36 @@ if ($_SESSION['Oficina']['id']) {
                 </section>
             </section>
         </section>
+
+        
+        <!-- Funcion para filtra busqueda -->
+        <script>
+            function searchTable() {
+
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("search");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tabla");
+                tr = table.getElementsByTagName("tr");
+
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td");
+                    for (var j = 0; j < td.length; j++) {
+                        if (td[j]) {
+                            txtValue = td[j].textContent || td[j].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                                break;
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+
     </body>
     <script src=".././js/jquery-3.7.1.min.js"></script>
     <script src=".././js/swal.min.js"></script>
@@ -138,6 +174,11 @@ if ($_SESSION['Oficina']['id']) {
                                     title: 'Error al Modificar el Registro'
                                 })
                             })
+                        }else{
+                            Toast.fire({
+                                    icon: 'info',
+                                    title: 'No se permiten valores vacios'
+                                })
                         }
                     }
                 })

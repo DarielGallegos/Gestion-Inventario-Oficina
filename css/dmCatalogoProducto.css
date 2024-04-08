@@ -54,14 +54,10 @@ form label {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #6D6D6D;
+    background-color: #008b18;
     color: white;
 }
 
 h1 {
-    text-align: center;
-}
-
-input {
     text-align: center;
 }

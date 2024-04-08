@@ -37,6 +37,7 @@ if ($_SESSION['Oficina']['id']) {
                             <?= $_SESSION['Oficina']['nombre'] ?>
                         </label>
                         <input type="hidden" id="idEmpleado" value='<?= $_SESSION['Oficina']['id'] ?>'>
+                        <br>
                         <label for="">Fecha de Registro</label>
                         <input type="date" class="form-control" id="dateEntrega" readonly>
                         <label for="">Seleccione el archivo de firma:</label>

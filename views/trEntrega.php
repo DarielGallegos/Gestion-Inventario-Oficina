@@ -166,7 +166,6 @@ if ($_SESSION['Oficina']['id']) {
             if (id != "0") {
                 id = id.split('-');
                 idP = parseInt(id[0]);
-                console.log(idP);
                 document.getElementById("cboDepartamento").value = id[1];
                 $.post(".././controllers/ctrlEntrega.php", {
                     request: 'detallePedido',
@@ -193,11 +192,11 @@ if ($_SESSION['Oficina']['id']) {
                         row.innerHTML = `
                                     <td>        
                                         <select class="form-control" name="" id="cboInsumo">
-                                            <option value="` + response.data[x]['ID_INSUMO'] + `">` + response.data[x]['ID_INSUMO'] + " " + response.data[x]['nombre'] + `</option>
+                                            <option value="` + response.data[x]['ID_INSUMO'] + `">`+ response.data[x]['nombre'] + " N ° "+ response.data[x]['ID_INSUMO'] + " - " + response.data[x]['ID_INSUMOS_CATALOGO'] + `</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="" id="stock" value="` + response.data[x]['cantidad'] + `">
+                                        <input type="number" class="form-control" name="" id="stock" value="`+response.data[x]['cantidad']+`" max="`+parseInt(response.data[x]['cantidad'])+`">
                                     </td>
                                     <td>
                                         <button class="btn btn-danger" onclick="deleteInsumo(this)">

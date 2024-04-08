@@ -36,3 +36,51 @@ $('#form-insumo').on('submit', (e) => {
         });
     }
 });
+
+function deleteInsumo(id){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Swal.fire({
+        icon: 'warning',
+        title: 'Advertencia',
+        text: 'Si elimina este registro, no lo podra visualizar',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((e) => {
+        if(e.isConfirmed){
+            $.post('.././controllers/ctrlArmadoInsumo.php', {
+                peticion: 'deleteInsumo',
+                id: id  
+            }).done((response) => {
+                if(response.status === 'success'){
+                    Toast.fire({
+                        icon: 'success',
+                        text: 'Exito al eliminar registro'
+                    }).then(() => {
+                        location.reload();
+                    })
+                }else{
+                    Toast.fire({
+                        icon: 'error',
+                        text: 'Error al eliminar registro'
+                    })
+                }
+            })
+        }else{
+            Toast.fire({
+                icon: 'info',
+                text: 'Operacion Cancelada'
+            })
+        }
+    })
+}

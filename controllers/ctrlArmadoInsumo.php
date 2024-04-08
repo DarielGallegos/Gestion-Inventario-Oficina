@@ -13,6 +13,9 @@ class ctrlArmadoInsumo extends MdlArmadoInsumo{
     public function getOneInsumoArmado($id){
         return mdlArmadoInsumo::getOneInsumoArmado($id);
     }
+    public function deleteInsumo($id){
+        return mdlArmadoInsumo::deleteInsumo($id);
+    }
 }
 
 
@@ -66,6 +69,19 @@ if(isset($_POST['peticion'])){
             }
             echo json_encode($response);
             break;
+        case 'deleteInsumo':
+            $request = $controller->deleteInsumo($id);
+            if($request[0]){
+                $response['status'] = "success";
+                $response['msg'] = $request[1];
+                $response['data'] = $request[2];
+            }else{
+                $response['status'] = "error";
+                $response['msg'] = $request[1];
+                $response['data'] = null;
+            }
+            echo json_encode($response);
+            break; 
     }
 }
 ?>

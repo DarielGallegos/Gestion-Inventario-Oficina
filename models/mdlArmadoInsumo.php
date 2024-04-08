@@ -69,5 +69,21 @@ class mdlArmadoInsumo extends connectMySQL{
             return [false, "Error al solicitar insumos", $e->getMessage()];
         }
     }
+    public function deleteInsumo($id){
+        $sql = 'CALL insumosDelete(?)';
+        try{   
+            $conn = connectMySQL::getInstance()->createConnection();
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(1, $id);
+            if($statement->execute()){
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $result = $statement->errorInfo();
+            }
+            return [true, "Exito al solicitar insumos", $result];
+        }catch(PDOException $e){
+            return [false, "Error al solicitar insumos", $e->getMessage()];
+        }
+    }
 }
 ?>
