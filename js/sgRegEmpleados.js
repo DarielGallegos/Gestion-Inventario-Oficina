@@ -10,7 +10,7 @@ $('#form-empeladoa').on('submit',(e)=>{
             var registro = document.getElementById("registro").value;
             var Nombres = document.getElementById("inpnombre").value;
             var Apellido1 = document.getElementById("inpapellido1").value;
-            var Apellido2 = document.getElementById("inpapellido2").value;
+            var Apellido2 = document.getElementById("inpapellido2").soloNumeros.value;
             var Dni = document.getElementById("inpdni").value;
             var Telefono = document.getElementById("inptelefono").value;
             var Direccion = document.getElementById("inpdireccion").value;
@@ -54,6 +54,17 @@ $('#form-empeladoa').on('submit',(e)=>{
             })
     } 
 });
+
+
+function soloNumeros(e){
+    let key = e.keyCode || e.which;
+    let tecla = String.fromCharCode(key).toLocaleLowerCase();
+    let numeros = "0123456789";
+
+    if(numeros.indexOf(tecla) == -1)
+        return false;
+}
+
 
 function deleteEmpleado(id){
     const Toast = Swal.mixin({

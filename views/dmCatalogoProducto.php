@@ -18,7 +18,7 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/bootstrap.min.css">
         <link rel="stylesheet" href=".././css/index.css">
         <link rel="stylesheet" href=".././css/globalStyle.css">
-        <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
+         <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
     </head>
 
@@ -48,7 +48,7 @@ if ($_SESSION['Oficina']['id']) {
                 </section>
                 <section class="col col-8">
                     <label for="search">Buscar Producto:</label>
-                    <input type="text" id="search" onkeyup="searchTable()" placeholder="Search by ID, Nombre, Descripcion, Estante, or ID_Categoria" style="width: 50%; padding: 8px;">
+                    <input type="text" id="search" onkeyup="searchTable()" placeholder="🔍Buscar por: ID, Nombre, Descripcion, Categoria" style="width: 50%; padding: 8px;">
                     <br>
                     <table class="table table-hover" id="tabla">
                         <thead>
