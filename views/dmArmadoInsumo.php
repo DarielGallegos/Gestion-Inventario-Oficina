@@ -63,7 +63,9 @@ if ($_SESSION['Oficina']['id']) {
                                         <button class="btn btn-warning" onclick="editInsumo(<?= $insumosArmados[$i]['ID'] ?>)">
                                             <i class="nf nf-md-pencil_outline"></i>
                                         </button>
-                                        
+                                        <button class="btn btn-danger" onclick="deleteInsumo(<?= $insumosArmados[$i]['ID'] ?>)">
+                                            <i class="nf nf-fa-trash_o"></i>
+                                        </button>
                                     </td>
                                 <?php } ?>
                         </tbody>
@@ -172,6 +174,11 @@ if ($_SESSION['Oficina']['id']) {
                                     title: 'Error al Modificar el Registro'
                                 })
                             })
+                        }else{
+                            Toast.fire({
+                                    icon: 'info',
+                                    title: 'No se permiten valores vacios'
+                                })
                         }
                     }
                 })

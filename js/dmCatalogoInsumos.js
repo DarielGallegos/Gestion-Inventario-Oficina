@@ -1,11 +1,13 @@
 $('#form-catalogo-insumo').on('submit', (e) => {
     e.preventDefault();
-    if($('#insumo').val != "" && $('#descripcionInsumo').val != "" && $('#idCategoria').val != "0"){
+    var nombre = $('#insumo').val().trim();
+    var descripcion =$('#descripcionInsumo').val().trim();
+    console.log(nombre);
+    console.log(descripcion);
+    if(nombre != "" &&  descripcion != "" && $('#idCategoria').val != "0"){
         var peticion = document.getElementById("peticion").value;
-        var nombre = document.getElementById("insumo").value; 
-        var descripcion = document.getElementById('descripcionInsumo').value;
         var idCat = parseInt(document.getElementById('idCategoria').value);
-        $.post('.././controllers/CtrlCatalogoInsumos.php', {
+         $.post('.././controllers/CtrlCatalogoInsumos.php', {
             peticion: peticion,
             insumo: nombre,
             descripcionInsumo: descripcion,
@@ -18,7 +20,6 @@ $('#form-catalogo-insumo').on('submit', (e) => {
                     title: 'Exito',
                 }).then((res) => {
                     if (res.isConfirmed) {
-                        location.reload();
                     }
                 });
             } else {
@@ -29,6 +30,11 @@ $('#form-catalogo-insumo').on('submit', (e) => {
                 });
             }
         })
+    }else{
+        Swal.fire({
+            icon: 'warning',
+            text: 'Llene todos los campos'
+        });
     }
 });
 

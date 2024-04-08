@@ -1,7 +1,6 @@
 $('#form-dep-reg').on('submit', function (e) {
     e.preventDefault();
-    console.log(new FormData(this));
-    if ($('#NoDepartamentos').val != "") {
+    if ($('#NoDepartamento').val().trim() != "") {
         $.ajax({
             url: '.././controllers/CtrlDepartamentos.php',
             method: 'POST',
@@ -74,20 +73,31 @@ function editDepartamento(id) {
             showCancelButton: true
         }).then((result) => {
             if (result.isConfirmed) {
-                var nombre = document.getElementById("nombre").value;
-                $.post('.././controllers/ctrlDepartamentos.php', {
-                    request: 'updateDep',
-                    NoDepartamento: nombre,
-                    id: id
-                }).done((response) => {
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Exito al Modificar el Registro'
-                    }).then((conf) => {
-                        location.reload();
+                if ($('#nombre').val().trim() != "") {
+                    var nombre = document.getElementById("nombre").value;
+                    $.post('.././controllers/ctrlDepartamentos.php', {
+                        request: 'updateDep',
+                        NoDepartamento: nombre,
+                        id: id
+                    }).done((response) => {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Exito al Modificar el Registro'
+                        }).then((conf) => {
+                            location.reload();
+                        })
                     })
+                } else {
+                    Toast.fire({
+                        icon: 'warning',
+                        text: 'No puede enviar campos vacios'
+                    })   
+                }
+            }else{
+                Toast.fire({
+                    icon: 'info',
+                    text: 'Se cancelo operacion'
                 })
-
             }
         })
     })

@@ -19,12 +19,9 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/bootstrap.min.css">
         <link rel="stylesheet" href=".././css/index.css">
         <link rel="stylesheet" href=".././css/globalStyle.css">
+        <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
         <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
-        <script src=".././js/sgRegEmpleados.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
-
     </head>
 
     <body>
@@ -80,26 +77,13 @@ if ($_SESSION['Oficina']['id']) {
                         <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
                         <input type="date" class="form-control" id="inpfechaN" name="fechaN">
                         <br>
-                        <!--  <label for="list-dpto" class="form-label">Departamento: </label> 
-                    <select name="listDpto" id="listDpto" class="form-control">
-                         
-                    </select>
-                    -->
                         <br>
-
-
                         <button type="submit" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
-                        <button type="button" class="btn btn-outline-primary" id="btnCancelar">Cancelar</button>
                     </form>
                     <!--Fin del formulario-->
-
                     <br>
-                    <!--<section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
-                    
-                </section>-->
                 </section>
                 <!-- Fin registro de empleados -->
-
                 <!-- Inicio de la tabla -->
                 <section class="col">
                     <table class="table table-hover" id="tabla">
@@ -144,22 +128,21 @@ if ($_SESSION['Oficina']['id']) {
                             <?php } ?>
                         </tbody>
                     </table>
-                    <?php if(count($empleados) == 0) {
-                    echo "<div id='div_msg_vacio' class='position-relative'>
+                    <?php if (count($empleados) == 0) {
+                        echo "<div id='div_msg_vacio' class='position-relative'>
                             <img class='position-relative start-50 translate-middle-x' src='../img/vacio.jpg' />
                             <p class='text-center'>No hay elementos.</p>
                             </div>";
-                    }?>
+                    } ?>
                 </section>
                 <!-- Fin de la tabla -->
             </div>
         </section>
-
     </body>
-    <script src=".././js/jquery-3.7.1.min.js"></script>
-    <script src=".././js/swal.min.js"></script>
     <script src=".././js/bootstrap.bundle.min.js"></script>
     <script src=".././js/popper.min.js"></script>
+    <script src=".././js/swal.min.js"></script>
+    <script src=".././js/jquery-3.7.1.min.js"></script>
     <script src=".././js/sgRegEmpleados.js"></script>
 
     <script>
@@ -206,10 +189,10 @@ if ($_SESSION['Oficina']['id']) {
                                 <select name="listDepartamentos" id="listDepartamentosUp" class="form-control">
                                     <option value="0">SELECCIONE</option>
                                     <?php
-                                        for($i=0; $i<count($departamentos); $i++){
+                                    for ($i = 0; $i < count($departamentos); $i++) {
                                     ?>
-                                        <option value="<?= $departamentos[$i]['ID']?>"><?= $departamentos[$i]['nombre']?></option>    
-                                    <?php }?>
+                                        <option value="<?= $departamentos[$i]['ID'] ?>"><?= $departamentos[$i]['nombre'] ?></option>    
+                                    <?php } ?>
                                 </select>
                                 <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
                                 <input type="date" class="form-control" id="fechaNUp" name="fechaN" value=''>
@@ -225,39 +208,52 @@ if ($_SESSION['Oficina']['id']) {
 
                 }).then((res) => {
                     if (res.isConfirmed) {
-
-                        var nombre = document.getElementById('nombreUp').value;
-                        var apellidosP = document.getElementById('apellido1Up').value;
-                        var apellidosM = document.getElementById('apellido2Up').value;
-                        var dnni = document.getElementById('dniUp').value;
-                        var telefonos = document.getElementById('telefonoUp').value;
-                        var direccione = document.getElementById('direccionUp').value;
-                        var generos = document.getElementById('listGeneroUp').value;
-                        var f_nac = document.getElementById('fechaNUp').value;
-                        var idDep =document.getElementById('listDepartamentosUp').value;
-                        console.log(f_nac);
-                         $.post('.././controllers/CtrlEmpleados.php', {
-                            registro: 'updateEmpleados',
-                            nombre: nombre,
-                            apellido1: apellidosP,
-                            apellido2: apellidosM,
-                            dni: dnni,
-                            telefono: telefonos,
-                            direccion: direccione,
-                            listGenero: generos,
-                            fechaN: f_nac,
-                            idDep: idDep,
-                            id: id
-                        }).done((resolve) => {
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Exito al modificar el registro',
-                            }).then(() => {
-                                location.reload();
+                        if ($('#nombreUp').val().trim() != "" && $('#apellido1Up').val().trim() != "" &&
+                            $('#apellido2Up').val().trim() != "" && $('#dniUp').val().trim() != "" &&
+                            $('#telefonoUp').val().trim() != "" && $('#direccionUp').val().trim() != "" &&
+                            $('#listGeneroUp').val().trim() != "" && $('#fechaNUp').val().trim() != "" &&
+                            $('#listDepartamentosUp').val() != "0") {
+                            var nombre = document.getElementById('nombreUp').value;
+                            var apellidosP = document.getElementById('apellido1Up').value;
+                            var apellidosM = document.getElementById('apellido2Up').value;
+                            var dnni = document.getElementById('dniUp').value;
+                            var telefonos = document.getElementById('telefonoUp').value;
+                            var direccione = document.getElementById('direccionUp').value;
+                            var generos = document.getElementById('listGeneroUp').value;
+                            var f_nac = document.getElementById('fechaNUp').value;
+                            var idDep = document.getElementById('listDepartamentosUp').value;
+                            $.post('.././controllers/CtrlEmpleados.php', {
+                                registro: 'updateEmpleados',
+                                nombre: nombre,
+                                apellido1: apellidosP,
+                                apellido2: apellidosM,
+                                dni: dnni,
+                                telefono: telefonos,
+                                direccion: direccione,
+                                listGenero: generos,
+                                fechaN: f_nac,
+                                idDep: idDep,
+                                id: id
+                            }).done((resolve) => {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Exito al modificar el registro',
+                                }).then(() => {
+                                    location.reload();
+                                })
                             })
+                        }else{
+                            Toast.fire({
+                                icon: 'warning',
+                                text: 'No se permiten datos vacios'
+                            })
+                        }
+                    }else{
+                        Toast.fire({
+                            icon: 'info',
+                            text: 'Se cancelo la operacion'
                         })
                     }
-
                 })
 
             }).fail((ERR) => {

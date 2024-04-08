@@ -65,7 +65,7 @@ if ($_SESSION['Oficina']['id']) {
                                 <div onclick=" generarReporte('reportCatalogoInsumos');" class="card" style="width: 8rem; height: 13rem;">
                                     <img src="../img/icons/catalogo.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h6 class="card-title">Catalago Productos</h6>
+                                        <h6 class="card-title">Catalago Insumos</h6>
                                     </div>
                                 </div>
                             </div>

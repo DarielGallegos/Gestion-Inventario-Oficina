@@ -8,11 +8,11 @@
     <link rel="stylesheet" href=".././css/bootstrap.min.css">
     <link rel="stylesheet" href=".././css/index.css">
     <link rel="stylesheet" href=".././css/globalStyle.css">
-
+    <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
+    <link rel="stylesheet" href=".././css/nerdfont.css">
     <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <section class="container-fluid row gx-5 px-4">
 
             <!-- Inicio Estructura de Formulario Registro -->
-         <section class=" col col-6 col-md-4">
+            <section class=" col col-6 col-md-4">
                 <p class="text-center paragraph">Formulario de Peticiones</p>
                 <form>
                     <label for="listProducto" class="form-label">Seleccione el producto: </label>
@@ -41,12 +41,12 @@
                     <label for="NomEmpleado" class="form-label">Ingrese su Nombre</label>
                     <input type="text" class="form-control" id="NomEmpleado" name="NomEmpleado">
                     <br>
-                    <label for="IdEmpleado"class="form-label">Ingrese su ID</label>
+                    <label for="IdEmpleado" class="form-label">Ingrese su ID</label>
                     <input type="text" class="form-control" id="IdEmpleado" name="IDdelempleado">
 
-            
+
                 </form>
-                <section class="btn-group mt-4" id="botnones"style="display: flex; justify-content: center;" >
+                <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
                     <button type="button" class="btn btn-outline-primary" id="btnAgregar" onclick="agregarBoton();">Agregar<i class="nf nf-cod-add"></i></button>
                     <button type="button" class="btn btn-outline-primary" id="btnEliminar">Eliminar<i class="fas fa-trash-alt"></i> </button>
                 </section>
@@ -74,23 +74,22 @@
     </section>
 </body>
 <script src=".././js/bootstrap.bundle.min.js">
-       
-       function agregarBoton() {
-    let produc = $("#listProducto").val();
-    let cantidadP = $("#inpCantidad").val();
-    let nombreEmp = $("#NomEmpleado").val();
+    function agregarBoton() {
+        let produc = $("#listProducto").val();
+        let cantidadP = $("#inpCantidad").val();
+        let nombreEmp = $("#NomEmpleado").val();
 
-    let datos = "<tr><td>" + produc + "</td><td>" + cantidadP + "</td><td>" + nombreEmp + "</td><td>" + "</td><td><button class='botonElimninar' onclick='eliminar(event);'>Eliminar</button></td></tr>";
-    let fila = document.createElement("tr");
-    fila.innerHTML = datos;
+        let datos = "<tr><td>" + produc + "</td><td>" + cantidadP + "</td><td>" + nombreEmp + "</td><td>" + "</td><td><button class='botonElimninar' onclick='eliminar(event);'>Eliminar</button></td></tr>";
+        let fila = document.createElement("tr");
+        fila.innerHTML = datos;
 
-    $("#tabla").append(fila);
-       }
+        $("#tabla").append(fila);
+    }
 
-       function eliminar(event) {
-    let fila = event.target.parentNode.parentNode;
-    fila.remove();
-       }
+    function eliminar(event) {
+        let fila = event.target.parentNode.parentNode;
+        fila.remove();
+    }
 </script>
 
 </html>
