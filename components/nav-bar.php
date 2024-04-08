@@ -1,4 +1,6 @@
-<nav class="row navbar navbar-dark bg-dark fixed-top">
+<link rel="stylesheet" href=".././css/navbar.css">
+
+<nav class="row navbar navbar-dark bg-green fixed-top" style= "">
     <section class="row container-fluid">
         <section class="col-2 align-self-start">
             <div class="row">
@@ -32,7 +34,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas offcanvas-end text-bg-green" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -234,3 +236,4 @@
         </section>
     </section>
 </nav>
+

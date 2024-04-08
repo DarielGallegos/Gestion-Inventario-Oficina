@@ -21,6 +21,7 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/globalStyle.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
         <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
+        <script src=".././js/sgRegEmpleados.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 
@@ -51,10 +52,10 @@ if ($_SESSION['Oficina']['id']) {
                         <input type="text" class="form-control" id="inpapellido2" name="apellido2">
 
                         <label for="inpdni" class="form-label">DNI: </label>
-                        <input type="text" class="form-control" id="inpdni" name="dni">
+                        <input type="text" class="form-control" id="inpdni" name="dni" onkeypress="return soloNumeros(event)">
 
                         <label for="inptelefono" class="form-label">Telefono: </label>
-                        <input type="text" class="form-control" id="inptelefono" name="telefono">
+                        <input type="text" class="form-control" id="inptelefono" name="telefono" onkeypress="return soloNumeros(event)">
 
                         <label for="inpdireccion" class="form-label">Direccion: </label>
                         <input type="text" class="form-control" id="inpdireccion" name="direccion">
@@ -191,7 +192,7 @@ if ($_SESSION['Oficina']['id']) {
                                 <label for="inpapellido2" class="form-label">Segundo apellido: </label>
                                 <input type="text" class="form-control" id="apellido2Up" name="apellido2" value='${response.data[0]['apellido-materno']}'>
                                 <label for="inpdni" class="form-label">DNI: </label>
-                                <input type="text" class="form-control" id="dniUp" name="dni" value='${response.data[0]['n-identidad']}'>
+                                <input type="text" class="form-control" id="dniUp" name="dni" onkeypress="return soloNumeros(event)" value='${response.data[0]['n-identidad']}'>
                                 <label for="inptelefono" class="form-label">Telefono: </label>
                                 <input type="text" class="form-control" id="telefonoUp" name="telefono" value='${response.data[0]['n-telefono']}'>
                                 <label for="inpdireccion" class="form-label">Direccion: </label>
