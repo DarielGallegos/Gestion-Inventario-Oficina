@@ -68,7 +68,7 @@
                     $path = $generator->createReport();
                 }
                 $response['path'] = $path;
-                $response['data'] = $request[2];
+                $response['data'] = $request[2] || [];
                 echo json_encode($response);
                 break;
         }

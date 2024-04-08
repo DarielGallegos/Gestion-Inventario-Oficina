@@ -46,6 +46,7 @@ function funRenderizarTabla(data) {
     columnas.forEach(col => {
         const th = document.createElement('th');
         th.innerText = col;
+        th.classList.add('text-center','custom-padding');
         tr_header.append(th);
     })
 
@@ -54,7 +55,7 @@ function funRenderizarTabla(data) {
 
         for(let i = 0; i < columnas.length; i++){
             const td_new = document.createElement('td');
-            td_new.innerText = fila[columnas[i]]; // fila['Apellido Paterno']
+            td_new.innerText = fila[columnas[i]]; 
             tr_new.append(td_new);
         }
 
@@ -211,7 +212,7 @@ function formatDate(date) {
     return day + '/' + month + '/' + year;
 }
 
-function funTablaPorDefecto(){
+function funTablaPorDefecto(reporte){
     var date = formatDate(new Date());
     var dateFilter = date;
     var empleado = document.getElementById('empleado').value;
@@ -221,7 +222,7 @@ function funTablaPorDefecto(){
     }
     /* if(fileName != "" && description != "" && encabezado != ""){ */
         $.post('.././controllers/CtrlConsultaReporteria.php', {
-            generateReport: "reportEmpleado",
+            generateReport: reporte,
             fileName: "reporte_empleados",
             header: "Reporte Empleados",
             description: "Rep",
@@ -241,13 +242,10 @@ function funTablaPorDefecto(){
             funRenderizarTabla(response.data);
             
         }).fail((err) => {
-            Toast.fire({
-                icon: 'error',
-                text: 'Error al generar reporte'
-            });
+            console.log(err)
         });
 
     /* } */
 }
 
-funTablaPorDefecto();
+funTablaPorDefecto( "reportInsumos");
