@@ -16,17 +16,18 @@ if (!isset($_SESSION['Oficina']['id'])) {
         <link rel="shortcut icon" href="./img/UTH-Black-favicon.png" type="image/x-icon">
     </head>
 
-    <body>
-        <section class="container-fluid margin-top">
+    <body >
+        <section class="container-fluid margin-top" >
             <section class="row">
                 <section class="col">
                 </section>
                 <section class="col">
-                    <section class="card dimension-card">
+                    <section class="card dimension-card" id="login">
                         <section class="row">
                             <section class="col-4">
                                 <section class="lock-container">
                                     <i class="nf nf-fa-lock"></i>
+                                    <img src="./img/UTH2.png" width="100%" >
                                 </section>
                             </section>
                             <section class="card-body col-8 background-login">
@@ -52,6 +53,7 @@ if (!isset($_SESSION['Oficina']['id'])) {
                 <section class="col"></section>
             </section>
         </section>
+        <img src="./img/login.jpg" id="imagen">
     </body>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/swal.min.js"></script>
