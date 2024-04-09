@@ -134,6 +134,8 @@ function editUsuario(id) {
                             Toast.fire({
                                 icon: 'success',
                                 text: 'Exito al modificar empleado'
+                            }).then(() => {
+                                location.reload();
                             });
                         }
                     });
