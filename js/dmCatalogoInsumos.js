@@ -20,6 +20,7 @@ $('#form-catalogo-insumo').on('submit', (e) => {
                     title: 'Exito',
                 }).then((res) => {
                     if (res.isConfirmed) {
+                        location.reload();
                     }
                 });
             } else {
