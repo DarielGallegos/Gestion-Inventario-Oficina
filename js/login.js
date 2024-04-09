@@ -3,7 +3,7 @@ $('#form-login').on("submit", function(e){
         toast: true,
         position: "top-end",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
@@ -25,8 +25,9 @@ $('#form-login').on("submit", function(e){
                     text: 'Acceso Concedido',
                     icon: 'success',
                     title: 'Exito',
+                }).then((e) => {
+                    location.reload();
                 })
-                location.reload();
             }else{
                 Toast.fire({
                     text: 'Credenciales Erroneas',
