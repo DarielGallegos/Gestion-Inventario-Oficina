@@ -2,6 +2,76 @@ window.onload = () =>{
     
 }
 
+/* function funReporteEmpleados(){
+    let generateReport = "reportEmpleado";
+
+    $.post('.././controllers/CtrlConsultaReporteria.php', {
+        generateReport: generateReport,
+        fileName: fileName,
+        header: encabezado,
+        description: description,
+        date : date,
+        dateFilter: dateFilter,
+        empleado: empleado
+    }).done((response) => {
+        Toast.fire({
+            icon: 'success',
+            html: `
+                    <p>Reporte Generado Exitosamente</p>
+                    <a href="${response}" target="_blank">Abrir Reporte</a>
+                `,
+        });
+
+        funRenderizarTabla(response.data);
+
+    }).fail((err) => {
+        Toast.fire({
+            icon: 'error',
+            text: 'Error al generar reporte'
+        });
+    });
+} */
+
+function funRenderizarTabla(data) {
+    const tabla = document.getElementById('tabla_target')
+    tabla.innerHTML = "";
+
+    if(!data[0]) {
+        tabla.innerHTML = "No Hay resultados.";
+        return;
+    }
+
+    var columnas = Object.keys(data[0]);
+
+    const thead = document.createElement('thead');
+    const tr_header = document.createElement('tr');
+
+    const tbody = document.createElement('tbody');
+
+    columnas.forEach(col => {
+        const th = document.createElement('th');
+        th.innerText = col;
+        tr_header.appendChild(th);
+    })
+
+    thead.append(tr_header)
+    tabla.appendChild(thead);
+
+    data.forEach( fila => {
+        const tr_new = document.createElement('tr');
+
+        for(let i = 0; i < columnas.length; i++){
+            const td_new = document.createElement('td');
+            td_new.innerText = fila[columnas[i]]; 
+            tr_new.append(td_new);
+        }
+
+        tbody.append(tr_new);
+    })
+    
+    tabla.appendChild(tbody);
+}
+
 function mostrar(e) {
     if (!toggle_table_grafico) {
         document.getElementById('tabla').style.display = 'block';
@@ -82,10 +152,13 @@ function generarReporte(pet){
             var date = document.getElementById("dateCreate").value;
             var dateFilter = document.getElementById("dateFilter").value;
             var empleado = document.getElementById('empleado').value;
-            console.log(empleado);
+            
             if(dateFilter === undefined || dateFilter === null || dateFilter === ""){
                 dateFilter = date;
             }
+
+            console.log(dateFilter);
+
             if(fileName != "" && description != "" && encabezado != ""){
                 $.post('.././controllers/CtrlConsultaReporteria.php', {
                     generateReport: pet,
@@ -100,9 +173,12 @@ function generarReporte(pet){
                         icon: 'success',
                         html: `
                                 <p>Reporte Generado Exitosamente</p>
-                                <a href="${response}" target="_blank">Abrir Reporte</a>
+                                <a href="${response.path}" target="_blank">Abrir Reporte</a>
                             `,
                     });
+
+                    funRenderizarTabla(response.data);
+                    
                 }).fail((err) => {
                     Toast.fire({
                         icon: 'error',
@@ -113,5 +189,68 @@ function generarReporte(pet){
             }
         }        
     });
-
 }
+
+function formatDate(date) {
+    // Obtiene los componentes de la fecha
+    var day = date.getDate();
+    var month = date.getMonth() + 1; // Los meses en JavaScript se indexan desde 0
+    var year = date.getFullYear();
+
+    // Agrega ceros a la izquierda si es necesario
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+
+    // Retorna la fecha formateada
+    return year + '-' + month + '-' + day;
+}
+
+function funTablaPorDefecto(reporte){
+    var date = formatDate(new Date());
+    var dateFilter = date;
+    var empleado = document.getElementById('empleado').value;
+    console.log('funTablaPorDefecto:', date);
+    if(dateFilter === undefined || dateFilter === null || dateFilter === ""){
+        dateFilter = date;
+    }
+    /* if(fileName != "" && description != "" && encabezado != ""){ */
+        $.post('.././controllers/CtrlConsultaReporteria.php', {
+            generateReport: reporte,
+            fileName: "reporte_empleados",
+            header: "Reporte Empleados",
+            description: "Rep",
+            date : date,
+            dateFilter:"1999-01-01",
+            empleado: empleado
+        }).done((response) => {
+            const export_button_container = document.getElementById("path_link_container");
+            export_button_container.innerHTML = "";
+            const export_button = document.createElement('button');
+            export_button.setAttribute('class','btn btn-secondary')
+            export_button.innerHTML = "Exportar a pdf ";
+            export_button.addEventListener('click',()=> generarReporte(reporte));
+
+            const export_image = document.createElement('img');
+            export_image.setAttribute('src', '../img/pdf.png');
+            export_image.setAttribute('width', '20px'); 
+            export_image.style.marginRight = '5px'; 
+            
+          
+            export_button.appendChild(export_image);
+            export_button_container.append(export_button);
+            export_button.style = "float: right;";
+
+            funRenderizarTabla(response.data);
+            
+        }).fail((err) => {
+            console.log(err)
+        });
+
+    /* } */
+}
+
+funTablaPorDefecto( "reportInsumos");

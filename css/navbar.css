@@ -4,10 +4,23 @@
 }
 
 .dropdown-menu-dark {
-    background-color: #eac464;
+    background-color: #d7d5d082;
    
 }
 
+/* #eac46482 */
 .text-bg-green {
     background-color: green;
+}
+
+#menu-header{
+    background-color: #19921de5;
+}
+
+#fondo{
+    opacity: 5%;
+    position: absolute;
+    float:left ;
+    top: 435px;
+ 
 }

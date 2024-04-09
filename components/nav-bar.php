@@ -24,8 +24,8 @@
         </section>
         <section class="col-8 align-self-center">
             <section class="row">
-                <h1 class="text-center" style="color: white;">Gestión Inventario Oficina</h1>
-            </section>
+                <h1 class="text-center" style="color: white;"><img src="../img/logo.png" width="5%" style="border-radius: 4px"> Gestión Inventario Oficina </h1>
+            </section> 
         </section>
         <section class="col-2 align-self-end">
             <section class="row">
@@ -35,8 +35,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="offcanvas offcanvas-end text-bg-green" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
+                        <div class="offcanvas-header" id="menu-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" >Menú</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
@@ -93,7 +93,7 @@
                                         <li>
                                             <div class="container-fluid ml-4 dropdown-item">
                                                 <a class="navbar-brand" href=".././views/dmArmadoInsumo.php">
-                                                    <img src=".././img/icons/personas.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                                                    <img src=".././img/icons/armado-insumo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                                                     Armado de Insumos
                                                 </a>
                                             </div>
@@ -229,7 +229,12 @@
                                 <!-- Fin Creacion Menu Seguridad -->
                             </ul>
                             </ul>
+                            
                         </div>
+                        <div id="fondo">
+                            <img src="../img/UTH.jpg" >
+                            </div>
+                           
                     </div>
                 </div>
             </section>

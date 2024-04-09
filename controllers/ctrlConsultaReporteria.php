@@ -35,7 +35,9 @@
                     $generator = new GeneratorReports($request[2], $fileName, $header, $description, $date, $empleado);
                     $path = $generator->createReport();
                 }
-                echo json_encode($path);
+                $response['path'] = $path;
+                $response['data'] = $request[2];
+                echo json_encode($response);
                 break;
 
             case 'reportInsumos':
@@ -44,7 +46,9 @@
                     $generator = new GeneratorReports($request[2], $fileName, $header, $description, $date, $empleado);
                     $path = $generator->createReport();
                 }
-                echo json_encode($path);
+                $response['path'] = $path;
+                $response['data'] = $request[2];
+                echo json_encode($response);
                 break;
             
             case 'reportCatalogoInsumos':
@@ -53,15 +57,21 @@
                     $generator = new GeneratorReports($request[2], $fileName, $header, $description, $date, $empleado);
                     $path = $generator->createReport();
                 }
-                echo json_encode($path);
+                $response['path'] = $path;
+                $response['data'] = $request[2];
+                echo json_encode($response);
                 break;
             case 'reportPedidoFecha':
                 $request = $controler->getPedidoFechas($dateFilter);
                 if($request[0]){
                     $generator = new GeneratorReports($request[2], $fileName, $header, $description, $date, $empleado);
                     $path = $generator->createReport();
+
+                    $response['path'] = $path;
                 }
-                echo json_encode($path);
+                $response['data'] = $request[2];
+                
+                echo json_encode($response);
                 break;
         }
     }
