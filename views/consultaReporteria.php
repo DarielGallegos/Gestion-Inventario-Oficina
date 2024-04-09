@@ -81,7 +81,7 @@ if ($_SESSION['Oficina']['id']) {
                                     Pedidos Aceptados
                                 </div>
                                 <div class="card-body">
-                                    <?= $pedidos[0]['Estado'] ?>
+                                    <?= $pedidos[1]['Estado'] ?>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ if ($_SESSION['Oficina']['id']) {
                                     Pedidos Pendientes
                                 </div>
                                 <div class="card-body">
-                                    <?= $pedidos[1]['Estado'] ?>
+                                    <?= $pedidos[0]['Estado'] ?>
                                 </div>
                             </div>
                         </div>
