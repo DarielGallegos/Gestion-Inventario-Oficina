@@ -76,9 +76,9 @@ if ($_SESSION['Oficina']['id']) {
                         <br>
                         <label for="inpfechaN" class="form-label">Ingrese su fecha de nacimiento: </label>
                         <input type="date" class="form-control" id="inpfechaN" name="fechaN">
-                        <br>
-                        <br>
-                        <button type="submit" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
+                        <section class="btn-group mt-4" id="botnones" style="display: flex; justify-content: center;">
+                            <button type="submit" class="btn btn-outline-primary" id="btnAgregar">Agregar</button>
+                        </section>
                     </form>
                     <!--Fin del formulario-->
                     <br>
