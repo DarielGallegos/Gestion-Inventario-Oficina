@@ -104,10 +104,10 @@ if ($_SESSION['Oficina']['id']) {
                 <!-- Contenedor de gráfico y tabla -->
                 <section class="row row-cols-1 row-cols-md-1 g-5 col">
                     <div>
-                        <div id="path_link_container" style="padding: 16px; text-center text-center"></div>
-                        <tabla id="tabla_target" class="table table-striped table-hover table table-md"></tabla>
-                    </div>
-
+                        <div id="path_link_container" style="padding: 16px; text-center text-center"></div><br><br>
+                        <table id="tabla_target" class="table table-bordered table-striped"><table>
+                        </div>
+                   <!--  class="table table-striped table-hover table table-md" -->
 
                     <div class="grafico-container">
                         <div id="contenedorGrafico">
