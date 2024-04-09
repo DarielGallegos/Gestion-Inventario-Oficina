@@ -1,6 +1,6 @@
 form {
     color: #6D6D6D;
-    background-color: #F0F0F0;
+    background-color: #f9faad;
     padding: 20px;
     border-radius: 5px;
 }
@@ -10,8 +10,8 @@ form {
     padding: 10px 25px 10px 25px;
     border-radius: 15px;
     font-size: 20px;
-    background-color: #008b18;
-    color: #fce30077;
+    background-color: #2d7a26;
+    color: #f8f8f8ef;
 }
 
 .margin-top{
@@ -82,12 +82,13 @@ form {
 .lock-container{
     text-align: center;
     table-layout: auto;
-    color: #fce200;
+    color: #f0efe2;
     font-size: 90px;
-    background-color: #008b18;
+    background-color: #2d7a26;
     width: 100%;
     height: 100%;
     border-radius: 6px 0px 0px 6px;
+    border: 4px solid #d6d657;
 }
 
 .form-login{
@@ -103,4 +104,28 @@ form {
 .background-login{
     background: rgb(255,255,255);
     background: linear-gradient(198deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(255,255,251,1) 100%);
+}
+
+#login{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.89);
+}
+
+/* body{
+    background-color: rgba(230, 239, 107, 0.357);
+} */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Evita el desplazamiento de la página */
+    
+}
+#imagen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 55%;
 }
