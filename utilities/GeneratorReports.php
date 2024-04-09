@@ -1,5 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/utilities/dompdf/autoload.inc.php');
+    include('.././utilities/dompdf/vendor/autoload.php');
     use Dompdf\Dompdf;
     class GeneratorReports{
         private $dompdf;
@@ -41,7 +41,7 @@
             </head>
                 <body class="libre-baskerville-regular">
                     <div style="background-color: #f2f2f2;">
-                        <img src="'.$_SERVER['DOCUMENT_ROOT'].'/Gestion-Inventario-Oficina/img/UTH2.png" width="10%" >
+                        <img src="img\UTH2.png" width="10%" >
                         <div style="float: right; padding: 8px;" >
                             <h4>Fecha de creación: '.$this->date.'</h4>
                             <h4> Creado por: '. $this->owner.'</h4>

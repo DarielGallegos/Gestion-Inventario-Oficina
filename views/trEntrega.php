@@ -12,6 +12,7 @@ if ($_SESSION['Oficina']['id']) {
         <link rel="stylesheet" href=".././css/bootstrap.min.css">
         <link rel="stylesheet" href=".././css/index.css">
         <link rel="stylesheet" href=".././css/globalStyle.css">
+        <link rel="stylesheet" href=".././css/dmCatalogoProducto.css">
         <link rel="stylesheet" href=".././css/nerdfont.css">
         <link rel="shortcut icon" href=".././img/UTH-Black-favicon.png" type="image/x-icon">
         <script src="https://code.jquery.com/jquery-3.7.1.js"
